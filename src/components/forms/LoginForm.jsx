@@ -1,0 +1,34 @@
+import React, {useState} from 'react';
+import CustomInput from "../inputs/CustomInput";
+import CustomPassword from "../inputs/CustomPassword";
+import LoginButton from "../buttons/LoginButton";
+import './LoginForm.css'
+const LoginForm = () => {
+  const[login, setLogin] = useState('')
+  const[password, setPassword] = useState('')
+  function loginUser(){
+    alert(login + " " + password)
+  }
+  return (
+    <div className="auth-form-container">
+      <h2 className="h2">Вход в личный кабинет</h2>
+      <h3 className="h3">Под университетским аккаунтом</h3>
+      <label className="label">Имя пользователя</label>
+      <CustomInput placeholder={"Введите логин"} value={login} onChange={event => {
+        setLogin(event.target.value)
+      }
+      }/>
+      <label className="label">Пароль</label>
+      <CustomPassword placeholder={"Введите пароль"} value={password} onChange={event => {
+            setPassword(event.target.value)
+          }
+        }
+      />
+      <div className="login-button">
+        <LoginButton text={"Войти"} onClick={loginUser}/>
+      </div>
+    </div>
+  );
+};
+
+export default LoginForm;
