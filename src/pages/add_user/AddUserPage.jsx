@@ -1,9 +1,10 @@
 import React from 'react';
 import './AddUserPage.css'
+import AddUserForm from "../../components/forms/add_user_form/AddUserForm";
 const AddUserPage = () => {
   return (
-    <div>
-
+    <div className="AddUser">
+      <AddUserForm/>
     </div>
   );
 };

@@ -1,9 +1,10 @@
-.button {
+.login-button {
     border: none;
     background-color: #72C81E;
-    padding: 15px 50px 15px 50px;
     border-radius: 10px;
     cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: #FFFFFF;
     font-size: 20px;
     width: 50%;

@@ -1,0 +1,6 @@
+.AddUser {
+    height: 100vh;
+    background-image: url("/assets/BackgroundAddUser.png");
+    background-color: #cccccc;
+    background-size: cover;
+}
