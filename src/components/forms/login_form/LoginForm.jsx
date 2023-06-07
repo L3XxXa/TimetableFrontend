@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import CustomInput from "../inputs/CustomInput";
-import CustomPassword from "../inputs/CustomPassword";
-import LoginButton from "../buttons/LoginButton";
+import CustomInput from "../../inputs/CustomInput";
+import CustomPassword from "../../inputs/CustomPassword";
+import LoginButton from "../../buttons/login_button/LoginButton";
 import './LoginForm.css'
 const LoginForm = () => {
   const[login, setLogin] = useState('')
