@@ -1,3 +1,6 @@
+import axios from "axios";
+import Cookies from "../cookies/Cookies";
+
 export default {
   name: 'Api',
   data(){
@@ -6,9 +9,26 @@ export default {
     }
   },
   methods:{
-    auth(data){
+    async auth(data){
       console.log(data);
-
+      const url = new URL(this.url);
+      url.pathname = "api/v1/auth/login"
+      setTimeout(
+        await axios({
+          method: "post",
+          url: url.href,
+          headers:{
+            "Content-Type": 'application/json',
+            data: data
+          }
+        }).then(response=> {
+          console.log(response)
+          // Cookies.methods.addCookies("type" + response.type)
+          // Cookies.methods.addCookies("accessToken" + response)
+        }).catch(error => {
+          console.log(error)
+        })
+      )
     }
   }
 }

@@ -7,7 +7,11 @@ const LoginForm = () => {
   const[login, setLogin] = useState('')
   const[password, setPassword] = useState('')
   function loginUser(){
-    alert(login + " " + password)
+    const loginData = {
+      'login': login,
+      'password': password
+    }
+
   }
   return (
     <div className="auth-form-container">
