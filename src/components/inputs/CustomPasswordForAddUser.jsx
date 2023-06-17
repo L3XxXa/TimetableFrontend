@@ -1,7 +1,7 @@
 import React from 'react';
-import './Input.css'
+import './inputForAddUser.css'
 
-const CustomPassword = (props) => {
+const CustomPasswordForAddUser = (props) => {
   return (
     <div>
       <input type="password"
@@ -14,4 +14,4 @@ const CustomPassword = (props) => {
   );
 };
 
-export default CustomPassword;
+export default CustomPasswordForAddUser;

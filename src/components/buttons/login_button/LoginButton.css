@@ -1,11 +1,9 @@
 .login-button {
-    border: none;
     background-color: #72C81E;
+    border: none;
+    padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: #FFFFFF;
-    font-size: 20px;
-    width: 50%;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 15px;
 }

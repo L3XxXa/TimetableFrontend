@@ -1,9 +1,10 @@
-.add-user-button {
+.input {
+    margin: 0.5rem 0;
+    padding: 1rem;
     border: none;
-    padding: 10px;
     border-radius: 10px;
-    cursor: pointer;
-    background-color: #FF5151;
+    background: #D8D8D8;
+    width: 91%;
+    font-size: 20px;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    font-size: 15px;
 }

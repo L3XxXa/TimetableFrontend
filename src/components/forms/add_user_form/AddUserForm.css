@@ -1,21 +1,27 @@
 @media screen and (min-width: 600px) {
     .auth-form-container {
-        padding: 5rem;
-        border-radius: 10px;
         background: #F1F1F1;
-        width: 30%;
-        margin: auto;
+        padding: 5rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: 0.5rem;
     }
 }
 
 .add-user-button{
-    text-align: center;
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 .h2{
     text-align: center;
     font-size: 30px;
     font-weight: normal;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 .h3{
@@ -23,6 +29,7 @@
     font-size: 20px;
     font-weight: normal;
     margin-bottom: 50px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
 .label {
@@ -30,4 +37,5 @@
     margin-left: 1rem;
     color: #000000;
     font-size: 20px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
