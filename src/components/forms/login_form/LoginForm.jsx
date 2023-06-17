@@ -3,15 +3,19 @@ import CustomInput from "../../inputs/CustomInput";
 import CustomPassword from "../../inputs/CustomPassword";
 import LoginButton from "../../buttons/login_button/LoginButton";
 import './LoginForm.css'
+import api from "../../../api/Api";
+
 const LoginForm = () => {
   const[login, setLogin] = useState('')
   const[password, setPassword] = useState('')
-  function loginUser(){
+  async function loginUser(){
     const loginData = {
       'login': login,
       'password': password
-    }
-
+    };
+    await(async() => {
+      await api.methods.auth(loginData)
+    })
   }
   return (
     <div className="auth-form-container">
