@@ -20,15 +20,70 @@ const auth = async (data) => {
     cookies.addCookies("type", response.data.type)
     cookies.addCookies("accessToken", response.data.accessToken)
     cookies.addCookies("refreshToken", response.data.refreshToken)
-    // Cookies.methods.addCookies("type" + response.type)
-    // Cookies.methods.addCookies("accessToken" + response)
   }).catch(error => {
     console.log(error)
   })
 };
 
+const refreshToken = async () => {
+  console.log("Trying to get new JWT")
+  const type = cookies.getCookies("type")
+  const accessToken = cookies.getCookies("accessToken")
+  const refreshToken = cookies.getCookies("refreshToken")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/auth/token"
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: {
+      "refreshToken": refreshToken
+    }
+  }).then(response => {
+    console.log(response.data.type)
+    cookies.addCookies("type", response.data.type)
+    cookies.addCookies("accessToken", response.data.accessToken)
+  }).catch(error => {
+    console.log(error)
+  })
+};
+
+// 403 прилетает - обновляем токен
+
+const addUser = async (data) => {
+  console.log("Trying to add new user...")
+  console.log(data)
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/auth/register/admin"
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+    console.log("response: " + response)
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addUser(data)
+    }
+    console.log(error)
+    throw error
+  })
+};
+
 const exportedFunctions = {
   auth,
+  refreshToken,
+  addUser
 };
 
 export default exportedFunctions;
