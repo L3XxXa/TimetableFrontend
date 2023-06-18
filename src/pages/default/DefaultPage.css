@@ -1,5 +1,5 @@
-.Login {
-    background-image: url("/assets/backgrounds/BackgroundLogin.png");
+.Default {
+    background-image: url("/assets/backgrounds/BackgroundDefault.png");
     text-align: center;
     display: flex;
     align-items: center;
@@ -9,4 +9,10 @@
     position: relative;
     min-height: 99vh;
     min-width: 102vh;
+}
+
+.heading{
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 30px;
+    font-weight: normal;
 }
