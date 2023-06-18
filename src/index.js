@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import LoginPage from "./pages/login/LoginPage";
 import AddUserPage from "./pages/add_user/AddUserPage";
+import DefaultPage from "./pages/default_page/DefaultPage";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <LoginPage/>
+    element: <DefaultPage/>
   },
   {
     path: '/addUser',
