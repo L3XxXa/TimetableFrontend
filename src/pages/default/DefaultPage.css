@@ -1,5 +1,5 @@
-.AddUser {
-    background-image: url("/assets/BackgroundAddingForm.png");
+.Default {
+    background-image: url("/assets/BackgroundDefault.png");
     text-align: center;
     display: flex;
     align-items: center;
@@ -9,5 +9,4 @@
     position: relative;
     min-height: 99vh;
     min-width: 102vh;
-
 }
