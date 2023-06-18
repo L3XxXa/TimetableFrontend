@@ -1,6 +1,6 @@
-import './Input.css'
+import './inputForLogin.css'
 
-const CustomInput = (props) => {
+const CustomInputForLogin = (props) => {
   return (
     <div>
       <input type="text"
@@ -13,4 +13,4 @@ const CustomInput = (props) => {
   );
 };
 
-export default CustomInput;
+export default CustomInputForLogin;

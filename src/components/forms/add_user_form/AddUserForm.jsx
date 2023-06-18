@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './AddUserForm.css'
-import CustomInput from "../../inputs/CustomInput";
-import CustomPassword from "../../inputs/CustomPassword";
 import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
+import CustomPasswordForAddUser from "../../inputs/CustomPasswordForAddUser";
 
 const AddUserForm = () => {
   const[login, setLogin] = useState('')
@@ -17,18 +17,18 @@ const AddUserForm = () => {
       <h2 className="h2">Добавление пользователя</h2>
       <h3 className="h3">Университетский аккаунт</h3>
       <label className="label">Имя пользователя</label>
-      <CustomInput placeholder={"Введите логин"} value={login} onChange={event => {
+      <CustomInputForAddUser placeholder={"Введите логин"} value={login} onChange={event => {
         setLogin(event.target.value)
       }
       }/>
       <label className="label">Пароль</label>
-      <CustomPassword placeholder={"Введите пароль"} value={password} onChange={event => {
+      <CustomPasswordForAddUser placeholder={"Введите пароль"} value={password} onChange={event => {
         setPassword(event.target.value)
       }
       }
       />
       <label className="label">Роль</label>
-      <CustomInput placeholder={"Выберите роль"} value={role} onChange={event => {
+      <CustomInputForAddUser placeholder={"Выберите роль"} value={role} onChange={event => {
         setRole(event.target.value)
       }
       }/>

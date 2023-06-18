@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import CustomInput from "../../inputs/CustomInput";
-import CustomPassword from "../../inputs/CustomPassword";
+import CustomInputForLogin from "../../inputs/CustomInputForLogin";
+import CustomPasswordForLogin from "../../inputs/CustomPasswordForLogin";
 import LoginButton from "../../buttons/login_button/LoginButton";
 import './LoginForm.css'
 import api from "../../../api/Api";
@@ -22,12 +22,12 @@ const LoginForm = () => {
       <h2 className="h2">Вход в личный кабинет</h2>
       <h3 className="h3">Под университетским аккаунтом</h3>
       <label className="label">Имя пользователя</label>
-      <CustomInput placeholder={"Введите логин"} value={login} onChange={event => {
+      <CustomInputForLogin placeholder={"Введите логин"} value={login} onChange={event => {
         setLogin(event.target.value)
       }
       }/>
       <label className="label">Пароль</label>
-      <CustomPassword placeholder={"Введите пароль"} value={password} onChange={event => {
+      <CustomPasswordForLogin placeholder={"Введите пароль"} value={password} onChange={event => {
             setPassword(event.target.value)
           }
         }
