@@ -19,14 +19,14 @@ const AddUserForm = () => {
   };
 
   async function addUser(){
-    let userRole
+    let userRole = []
     switch (role){
       case '1': {
-        userRole="STUDENT"
+        userRole.push("STUDENT")
         break
       }
       case '2': {
-        userRole="TEACHER"
+        userRole.push("TEACHER")
         break
       }
     }
@@ -35,12 +35,12 @@ const AddUserForm = () => {
       'login': login,
       'email': email,
       'password': password,
-      'roles': [
-        userRole
-      ]
+      'roles': userRole
     }
     console.log(data);
-    await api.addUser(data)
+    await api.addUser(data).catch(error => {
+      alert(error.response.data)
+    })
   }
   return (
     <div className="auth-form-container">

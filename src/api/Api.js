@@ -27,16 +27,18 @@ const auth = async (data) => {
 
 const refreshToken = async () => {
   console.log("Trying to get new JWT")
+  const type = cookies.getCookies("type")
+  const accessToken = cookies.getCookies("accessToken")
   const refreshToken = cookies.getCookies("refreshToken")
   const url = new URL(baseUrl);
-  url.pathname = "api/v1/auth/login"
+  url.pathname = "api/v1/auth/token"
   await axios({
     method: "post",
     url: url.href,
     headers: {
       "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
     },
-    // тут не в боди надо его пихать
     data: {
       "refreshToken": refreshToken
     }
@@ -53,10 +55,11 @@ const refreshToken = async () => {
 
 const addUser = async (data) => {
   console.log("Trying to add new user...")
+  console.log(data)
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
-  url.pathname = "api/v1/auth/register"
+  url.pathname = "api/v1/auth/register/admin"
   await axios({
     method: "post",
     url: url.href,
@@ -64,13 +67,16 @@ const addUser = async (data) => {
       "Content-Type": 'application/json',
       "Authorization": `${type} ${accessToken}`
     },
-    data: {
-      data
-    }
+    data: data
   }).then(response => {
-    console.log("added user")
+    console.log("response: " + response)
   }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addUser(data)
+    }
     console.log(error)
+    throw error
   })
 };
 
