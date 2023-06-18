@@ -3,6 +3,7 @@ import './AddUserForm.css'
 import AddUserButton from "../../buttons/add_user_button/AddUserButton";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import CustomPasswordForAddUser from "../../inputs/CustomPasswordForAddUser";
+import CustomDropdown from "../../inputs/CustomDropdown";
 
 const AddUserForm = () => {
   const[login, setLogin] = useState('')
@@ -28,7 +29,7 @@ const AddUserForm = () => {
       }
       />
       <label className="label">Роль</label>
-      <CustomInputForAddUser placeholder={"Выберите роль"} value={role} onChange={event => {
+      <CustomDropdown placeholder={"Выберите роль"} value={role} onChange={event => {
         setRole(event.target.value)
       }
       }/>
