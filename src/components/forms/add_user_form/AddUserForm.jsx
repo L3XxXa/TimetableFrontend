@@ -8,7 +8,12 @@ import CustomDropdown from "../../inputs/CustomDropdown";
 const AddUserForm = () => {
   const[login, setLogin] = useState('')
   const[password, setPassword] = useState('')
-  const[role, setRole] = useState('')
+
+  const [role, setRole] = React.useState('1');
+
+  const handleChange = (event) => {
+    setRole(event.target.value);
+  };
 
   function addUser(){
     alert(login + " " + password + " " + role)
@@ -29,8 +34,8 @@ const AddUserForm = () => {
       }
       />
       <label className="label">Роль</label>
-      <CustomDropdown placeholder={"Выберите роль"} value={role} onChange={event => {
-        setRole(event.target.value)
+      <CustomDropdown placeholder={"Выберите роль"} handleChange={event => {
+        handleChange(event)
       }
       }/>
       <div className="add-user-button">
