@@ -1,6 +1,6 @@
 const addCookies = (key, value) => {
   const date = (new Date(Date.now() + 86400e10)).toUTCString();
-  console.log(`Adding cookie ${key} value=${value} expiring ${date}`);
+  console.log(`Adding cookie ${key} expiring ${date}`);
   document.cookie = `${key}=${value}; expires=${date}`;
   console.log(`Added cookie ${key}`);
 };
