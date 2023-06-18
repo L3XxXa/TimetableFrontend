@@ -3,8 +3,8 @@
     background-repeat: no-repeat;
     border: none;
     border-radius: 50px;
-    min-width: 50vh;
-    min-height: 50vh;
+    min-width: 350px;
+    min-height: 350px;
     border-left: 50vh;
     border-right: 50vh;
     cursor: pointer;
