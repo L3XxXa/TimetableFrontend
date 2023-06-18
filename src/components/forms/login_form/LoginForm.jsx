@@ -13,10 +13,10 @@ const LoginForm = () => {
       'login': login,
       'password': password
     };
-    await(async() => {
-      await api.methods.auth(loginData)
-    })
+    console.log(loginData)
+    await api.auth(loginData)
   }
+
   return (
     <div className="auth-form-container">
       <h2 className="h2">Вход в личный кабинет</h2>
