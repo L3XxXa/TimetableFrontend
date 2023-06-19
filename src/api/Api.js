@@ -14,13 +14,34 @@ const auth = async (data) => {
       "Content-Type": 'application/json',
     },
     data: data
-
   }).then(response => {
-    console.log(response.data.type)
     cookies.addCookies("type", response.data.type)
     cookies.addCookies("accessToken", response.data.accessToken)
     cookies.addCookies("refreshToken", response.data.refreshToken)
     cookies.addCookies("login", data.login)
+  }).catch(error => {
+    console.log(error)
+  })
+  await getRoles(data.login)
+};
+
+const getRoles = async (data)=> {
+  console.log(data)
+  console.log("Trying to get role for user")
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/roles"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    params:{
+      "login": data
+    }
+  }).then(response => {
+    cookies.addCookies("role", response.data[0])
   }).catch(error => {
     console.log(error)
   })
@@ -51,6 +72,7 @@ const refreshToken = async () => {
     console.log(error)
   })
 };
+
 
 // 403 прилетает - обновляем токен
 
@@ -112,7 +134,8 @@ const exportedFunctions = {
   auth,
   refreshToken,
   addUser,
-  addRoom
+  addRoom,
+  getRoles
 };
 
 export default exportedFunctions;
