@@ -20,6 +20,7 @@ const auth = async (data) => {
     cookies.addCookies("type", response.data.type)
     cookies.addCookies("accessToken", response.data.accessToken)
     cookies.addCookies("refreshToken", response.data.refreshToken)
+    cookies.addCookies("login", data.login)
   }).catch(error => {
     console.log(error)
   })
