@@ -5,7 +5,7 @@ import "./FTB.css"
 const FacultyTimetableButton = () => {
     return (
         <div>
-            <button className="FTB" > </button>
+            <button className="FTBlogged" > </button>
         </div>
     );
 };

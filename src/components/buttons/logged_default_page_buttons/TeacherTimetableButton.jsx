@@ -5,7 +5,7 @@ import "./TTB.css"
 const TeacherTimetableButton = () => {
     return (
         <div>
-            <button className="TTB" > </button>
+            <button className="TTBlogged" > </button>
         </div>
     );
 };

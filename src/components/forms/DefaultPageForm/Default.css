@@ -4,6 +4,11 @@
         justify-content: center;
     }
 }
+.h__logged{
+    transform: translate(0%, -250%);
+}
+
+
 .h{
     transform: translate(0%, -850%);
 }

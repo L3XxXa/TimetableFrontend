@@ -8,7 +8,7 @@ const DefaultLoggedPage = () => {
     <div className="DefaultPage">
       <div className="container">
         <FacultyTimetableButton   />
-        <h1 className="h">Расписание</h1>
+        <h1 className="h__logged">Расписание</h1>
         <TeacherTimetableButton   />
         <PersonalTimetableButton/>
       </div>

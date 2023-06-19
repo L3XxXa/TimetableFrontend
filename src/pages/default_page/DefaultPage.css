@@ -9,8 +9,16 @@
     position: relative;
     min-height: 99vh;
     min-width: 102vh;
+    height: 700px;
 }
 .h{
+    text-align: center;
+    font-size: 30px;
+    font-weight: normal;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.h__logged{
     text-align: center;
     font-size: 30px;
     font-weight: normal;

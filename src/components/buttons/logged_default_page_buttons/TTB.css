@@ -1,4 +1,4 @@
-.TTB {
+.TTBlogged {
     background-image: url("/assets/imageButtons/timetableteachers.png");
     background-repeat: no-repeat;
     border: none;
@@ -8,6 +8,6 @@
     border-left: 50vh;
     border-right: 50vh;
     cursor: pointer;
-    transform: translate(0%, -62%);
+    transform: translate(0%, 0%);
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
