@@ -14,6 +14,11 @@ const AddUserForm = () => {
   const[email, setEmail] = useState('')
   const[role, setRole] = React.useState('1');
 
+  const options = [
+    {label: 'Ученик', value: '1'},
+    {label: 'Учитель', value: '2'},
+  ];
+
   const handleChange = (event) => {
     setRole(event.target.value);
   };
@@ -41,6 +46,7 @@ const AddUserForm = () => {
     await api.addUser(data).catch(error => {
       alert(error.response.data)
     })
+    alert(`Пользователь ${name + " " + surname} добавлен`)
   }
   return (
     <div className="auth-form-container">
@@ -76,7 +82,7 @@ const AddUserForm = () => {
       }
       />
       <label className="label">Роль</label>
-      <CustomDropdown placeholder={"Выберите роль"} handleChange={event => {
+      <CustomDropdown placeholder={"Выберите роль"} options={options} handleChange={event => {
         handleChange(event)
       }
       }/>
