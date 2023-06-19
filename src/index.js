@@ -7,6 +7,7 @@ import LoginPage from "./pages/login/LoginPage";
 import AddUserPage from "./pages/add_user/AddUserPage";
 import DefaultPage from "./pages/default_page/DefaultPage";
 import AddRoomPage from "./pages/add_room/AddRoomPage";
+import DefaultLoggedPage from "./pages/default_logged_page/DefaultLoggedPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <DefaultPage/>
+  },
+  {
+    path: '/home',
+    element: <DefaultLoggedPage/>
   },
   {
     path: '/addUser',
