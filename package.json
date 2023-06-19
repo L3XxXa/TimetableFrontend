@@ -12,6 +12,7 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-dropdown": "^1.11.0",
+    "react-escape-outside": "^0.1.2",
     "react-js-dropdavn": "^1.0.4",
     "react-router-dom": "^6.12.0",
     "react-scripts": "5.0.1",

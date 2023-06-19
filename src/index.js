@@ -9,6 +9,7 @@ import DefaultPage from "./pages/default_page/DefaultPage";
 import AddRoomPage from "./pages/add_room/AddRoomPage";
 import DefaultLoggedPage from "./pages/default_logged_page/DefaultLoggedPage";
 import FacultyPage from "./pages/FacultyPage/FacultyPage";
+import AddFacultyPage from "./pages/AddFacultyPage/AddFacultyPage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: '/addRoom',
     element: <AddRoomPage/>
+  },
+  {
+    path: '/addFaculty',
+    element: <AddFacultyPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
