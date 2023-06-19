@@ -27,6 +27,8 @@ const router = createBrowserRouter([
     element: <AddUserPage/>
   },
   {
+    path: '/Faculties',
+    element: <FacultyPage/>
     path: '/addRoom',
     element: <AddRoomPage/>
   }

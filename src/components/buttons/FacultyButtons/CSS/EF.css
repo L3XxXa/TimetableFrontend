@@ -1,0 +1,12 @@
+.EF {
+    background-image: url("/assets/FacultyButtons/EF.png");
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 50px;
+    min-width: 200px;
+    min-height: 200px;
+    border-left: 50vh;
+    border-right: 50vh;
+    cursor: pointer;
+    transform: translate(-120%,-25%);
+}
