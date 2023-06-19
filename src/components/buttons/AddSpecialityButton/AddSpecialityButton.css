@@ -1,0 +1,13 @@
+.sign{
+    text-align: right;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 25px;
+    transform: translate(3%,-82%);
+}
+.label{
+    text-align: left;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    transform: translate(-0%,10%);
+}
