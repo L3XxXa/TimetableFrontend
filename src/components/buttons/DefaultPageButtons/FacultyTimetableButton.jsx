@@ -2,10 +2,10 @@ import React from 'react';
 import "./FTB.css"
 
 
-const FacultyTimetableButton = () => {
+const FacultyTimetableButton = (props) => {
     return (
         <div>
-            <button className="FTB" > </button>
+            <button className="FTB" onClick={props.onClickButton}> </button>
         </div>
     );
 };
