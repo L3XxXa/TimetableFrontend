@@ -1,0 +1,15 @@
+.FacultyPage {
+    background-image: url("/assets/backgrounds/BackgroundDefault.png");
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.B{
+    text-align: center;
+    font-size: 30px;
+    font-weight: normal;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}

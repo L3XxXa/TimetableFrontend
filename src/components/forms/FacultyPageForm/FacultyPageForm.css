@@ -1,0 +1,9 @@
+@media screen and (min-width: 600px) {
+    .FPAGE {
+        align-items: center;
+        justify-content: center;
+    }
+}
+.B{
+    transform: translate(0%, 200%);
+}
