@@ -13,6 +13,7 @@ const DefaultLoggedPage = () => {
       navigate('/')
     }
   }
+
   useEffect(() => {
     console.log("Check if logged...")
     checkIfLogged()
