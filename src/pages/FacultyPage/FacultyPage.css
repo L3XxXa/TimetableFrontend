@@ -3,7 +3,8 @@
     text-align: center;
     align-items: center;
     justify-content: center;
-    height: 500px;
+    overflow-y: hidden;
+    height: 700px;
     background-repeat: no-repeat;
     background-size: cover;
 }
