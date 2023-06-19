@@ -8,6 +8,7 @@ import AddUserPage from "./pages/add_user/AddUserPage";
 import DefaultPage from "./pages/default_page/DefaultPage";
 import AddRoomPage from "./pages/add_room/AddRoomPage";
 import DefaultLoggedPage from "./pages/default_logged_page/DefaultLoggedPage";
+import FacultyPage from "./pages/FacultyPage/FacultyPage";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,10 @@ const router = createBrowserRouter([
     element: <AddUserPage/>
   },
   {
-    path: '/Faculties',
+    path: '/faculties',
     element: <FacultyPage/>
+  },
+  {
     path: '/addRoom',
     element: <AddRoomPage/>
   }
