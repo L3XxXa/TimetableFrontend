@@ -1,0 +1,12 @@
+.PersonalTimetableButton {
+    background-image: url("/assets/imageButtons/TimetablePersonal.png");
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 50px;
+    min-width: 350px;
+    min-height: 350px;
+    border-left: 50vh;
+    border-right: 50vh;
+    cursor: pointer;
+    transform: translate(150%,-163%);
+}

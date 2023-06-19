@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import CustomInputForLogin from "../../inputs/CustomInputForLogin";
 import CustomPasswordForLogin from "../../inputs/CustomPasswordForLogin";
 import LoginButton from "../../buttons/login_button/LoginButton";
+import { useNavigate } from 'react-router-dom'
 import './LoginForm.css'
 import api from "../../../api/Api";
 
 const LoginForm = () => {
+  const navigate = useNavigate()
   const[login, setLogin] = useState('')
   const[password, setPassword] = useState('')
   async function loginUser(){
@@ -13,8 +15,9 @@ const LoginForm = () => {
       'login': login,
       'password': password
     };
-    console.log(loginData)
-    await api.auth(loginData)
+    console.log(loginData);
+    await api.auth(loginData);
+    navigate('/home');
   }
 
   return (

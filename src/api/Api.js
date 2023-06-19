@@ -20,6 +20,7 @@ const auth = async (data) => {
     cookies.addCookies("type", response.data.type)
     cookies.addCookies("accessToken", response.data.accessToken)
     cookies.addCookies("refreshToken", response.data.refreshToken)
+    cookies.addCookies("login", data.login)
   }).catch(error => {
     console.log(error)
   })
@@ -80,10 +81,38 @@ const addUser = async (data) => {
   })
 };
 
+const addRoom = async (data) => {
+  console.log("Trying to add new room...")
+  console.log(data)
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/room"
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+    console.log("response: " + response)
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addUser(data)
+    }
+    console.log(error)
+    throw error
+  })
+};
+
 const exportedFunctions = {
   auth,
   refreshToken,
-  addUser
+  addUser,
+  addRoom
 };
 
 export default exportedFunctions;

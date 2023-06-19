@@ -6,7 +6,8 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import LoginPage from "./pages/login/LoginPage";
 import AddUserPage from "./pages/add_user/AddUserPage";
 import DefaultPage from "./pages/default_page/DefaultPage";
-import FacultyPage from "./pages/FacultyPage/FacultyPage";
+import AddRoomPage from "./pages/add_room/AddRoomPage";
+import DefaultLoggedPage from "./pages/default_logged_page/DefaultLoggedPage";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,18 @@ const router = createBrowserRouter([
     element: <DefaultPage/>
   },
   {
+    path: '/home',
+    element: <DefaultLoggedPage/>
+  },
+  {
     path: '/addUser',
     element: <AddUserPage/>
   },
   {
     path: '/Faculties',
     element: <FacultyPage/>
+    path: '/addRoom',
+    element: <AddRoomPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
