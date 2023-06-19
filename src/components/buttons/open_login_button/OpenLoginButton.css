@@ -1,10 +1,12 @@
-.add-user-button {
+.open__login__button{
+    background-color: #72C81E;
+    color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 30px;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #FF5151;
-    color: white;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-size: 20px;
+    transform: translate(600%,-1650%);
+
 }
