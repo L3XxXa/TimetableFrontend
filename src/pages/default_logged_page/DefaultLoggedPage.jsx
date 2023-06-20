@@ -30,13 +30,18 @@ const DefaultLoggedPage = () => {
     navigate('/settings')
   }
 
+  function openTimetable(){
+    cookies.addCookies("timetableName", "personal")
+    navigate('/timetable')
+  }
+
   return (
     <div className="DefaultPage">
       <div className="container">
         <FacultyTimetableButton   onClickButton={onClickButton}/>
         <h1 className="h__logged">Расписание</h1>
         <TeacherTimetableButton   />
-        <PersonalTimetableButton/>
+        <PersonalTimetableButton onClick={openTimetable}/>
         <h2 className="user__name" onClick={openSettings}>{ login }</h2>
       </div>
     </div>
