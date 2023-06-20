@@ -10,7 +10,7 @@
 .settings-form-container{
     display: flex;
     flex-direction: column;
-    transform: translate(-23%, 5%);
+    transform: translate(-23%, 10%);
 }
 
 .label1{
@@ -27,7 +27,7 @@
     color: #000000;
     font-size: 20px;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    transform: translate(-20%, 30%);
+    transform: translate(-20%,30%);
 }
 
 
