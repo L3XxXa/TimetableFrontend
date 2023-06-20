@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     overflow-y: hidden;
+    overflow-x: hidden;
     height: 700px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,4 +14,11 @@
     font-size: 30px;
     font-weight: normal;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.user__name_fac{
+    text-align: center;
+    font-size: 25px;
+    font-weight: normal;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    translate: 36.8% -7240%;
 }
