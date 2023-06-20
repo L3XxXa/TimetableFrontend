@@ -30,3 +30,12 @@
     transform: translate(-20%, 30%);
 }
 
+
+.add-faculty-button-button{
+    display: none;
+}
+
+.generate-button-button{
+    display: none;
+}
+

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "./SettingsForm.css"
 import CustomInputForSettings from "../../inputs/CustomInputForSettings";
 import CustomInputForSettings2 from "../../inputs/CustomInputForSettings2";
@@ -11,6 +11,14 @@ import {useNavigate} from "react-router-dom";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
+  const [isVisible, setVisible] = useState(false)
+
+  useEffect(() => {
+    if (cookies.getCookies('role') === "ADMIN"){
+      setVisible(true)
+    }
+  })
+
   function openAddUser(){
     navigate('/addUser')
   }
@@ -19,7 +27,6 @@ const SettingsForm = () => {
   }
 
   function logout(){
-    // slint-disable-next-line no-restricted-globals
     let logout = window.confirm("Вы действительно хотите выйти?")
     if (logout){
       cookies.addCookies('role', "")
@@ -37,13 +44,13 @@ const SettingsForm = () => {
           <CustomInputForSettings name={cookies.getCookies("login")}/>
           <label className="label2">Роль</label>
           <CustomInputForSettings2 role={cookies.getCookies("role")}/>
-          <div className="add-user-button-button">
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
               <AddUserButtonSettings onClick={openAddUser} text={"Добавить пользователя"} />
           </div>
-          <div className="add-faculty-button-button">
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
               <AddFacultyButtonSettings onClick={openAddFaculty} text={"Добавить факультет"} />
           </div>
-          <div className="generate-button-button">
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
           <div className="exit-button-button">
