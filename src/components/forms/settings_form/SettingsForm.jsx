@@ -7,6 +7,7 @@ import LoginButton from "../../buttons/login_button/LoginButton";
 import AddUserButtonSettings from "../../buttons/ButtonsForSettings/AddUserButtonSettings";
 import AddFacultyButtonSettings from "../../buttons/ButtonsForSettings/AddFacultyButtonSettings";
 import ExitButtonSettings from "../../buttons/ButtonsForSettings/ExitButtonSettings";
+import GenerateButtonSettings from "../../buttons/ButtonsForSettings/GenerateButtonSettings";
 const SettingsForm = () => {
   return (
       <div className="settings-form-container">
@@ -20,9 +21,13 @@ const SettingsForm = () => {
           <div className="add-faculty-button-button">
               <AddFacultyButtonSettings text={"Добавить факультет"} />
           </div>
+          <div className="generate-button-button">
+              <GenerateButtonSettings text={"Сгенерировать расписание"} />
+          </div>
           <div className="exit-button-button">
               <ExitButtonSettings text={"Выйти"} />
           </div>
+
       </div>
 
   );

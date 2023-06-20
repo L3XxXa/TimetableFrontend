@@ -10,8 +10,7 @@
 .settings-form-container{
     display: flex;
     flex-direction: column;
-    transform: translate(-20%, 0%);
-
+    transform: translate(-23%, 5%);
 }
 
 .label1{
