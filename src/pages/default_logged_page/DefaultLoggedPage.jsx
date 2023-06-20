@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import FacultyTimetableButton from "../../components/buttons/logged_default_page_buttons/FacultyTimetableButton";
 import TeacherTimetableButton from "../../components/buttons/logged_default_page_buttons/TeacherTimetableButton";
 import PersonalTimetableButton from "../../components/buttons/logged_default_page_buttons/PersonalTimetableButton";
@@ -7,11 +7,14 @@ import {useNavigate} from "react-router-dom";
 
 const DefaultLoggedPage = () => {
   const navigate = useNavigate()
+  const [login, setLogin] = useState("")
+
   function checkIfLogged(){
     const loginCookie = cookies.getCookies("login")
     if (loginCookie === "" || loginCookie == null){
       navigate('/')
     }
+    setLogin(loginCookie)
   }
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const DefaultLoggedPage = () => {
         <h1 className="h__logged">Расписание</h1>
         <TeacherTimetableButton   />
         <PersonalTimetableButton/>
+        <h2 className="user__name">{ login }</h2>
       </div>
     </div>
   );
