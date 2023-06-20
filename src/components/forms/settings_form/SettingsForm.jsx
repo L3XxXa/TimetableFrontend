@@ -8,13 +8,14 @@ import AddUserButtonSettings from "../../buttons/ButtonsForSettings/AddUserButto
 import AddFacultyButtonSettings from "../../buttons/ButtonsForSettings/AddFacultyButtonSettings";
 import ExitButtonSettings from "../../buttons/ButtonsForSettings/ExitButtonSettings";
 import GenerateButtonSettings from "../../buttons/ButtonsForSettings/GenerateButtonSettings";
+import cookies from "../../../cookies/Cookies";
 const SettingsForm = () => {
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
-          <CustomInputForSettings/>
+          <CustomInputForSettings name={cookies.getCookies("login")}/>
           <label className="label2">Роль</label>
-          <CustomInputForSettings2/>
+          <CustomInputForSettings2 role={cookies.getCookies("role")}/>
           <div className="add-user-button-button">
               <AddUserButtonSettings text={"Добавить пользователя"} />
           </div>
