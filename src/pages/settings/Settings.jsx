@@ -4,7 +4,7 @@ import SettingsForm from "../../components/forms/settings_form/SettingsForm";
 const Settings = () => {
   return (
     <div className="SettingsPage">
-      <h1 className="settings__heading">Настройки</h1>
+        <h1 className="w1">Настройки</h1>
       <SettingsForm classname="settings__form"/>
 
     </div>
