@@ -1,0 +1,14 @@
+.add-user-button-settings {
+    border: none;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #72C81E;
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 131%;
+    transform: translate(-12%, 50%);
+}

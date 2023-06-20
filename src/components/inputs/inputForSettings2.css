@@ -1,0 +1,11 @@
+.inputForSettings2 {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: #D8D8D8;
+    width: 120%;
+    font-size: 20px;
+    transform: translate(-12%, 21%);
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}

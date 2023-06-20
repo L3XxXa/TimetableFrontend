@@ -1,0 +1,32 @@
+@media screen and (min-width: 600px) {
+    .settings-form-container {
+        background: #F1F1F1;
+        padding: 5rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+}
+.settings-form-container{
+    display: flex;
+    flex-direction: column;
+    transform: translate(-23%, 5%);
+}
+
+.label1{
+    margin-left: 1rem;
+    text-align: left;
+    color: #000000;
+    font-size: 20px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    transform: translate(-20%, -100%);
+}
+.label2{
+    margin-left: 1rem;
+    text-align: left;
+    color: #000000;
+    font-size: 20px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    transform: translate(-20%, 30%);
+}
+
