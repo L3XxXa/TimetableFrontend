@@ -19,12 +19,16 @@ const SettingsForm = () => {
   }
 
   function logout(){
-    cookies.addCookies('role', "")
-    cookies.addCookies('login', "")
-    cookies.addCookies('accessToken', '')
-    cookies.addCookies('refreshToken', '')
-    cookies.addCookies('type', '')
-    navigate('/')
+    // slint-disable-next-line no-restricted-globals
+    let logout = window.confirm("Вы действительно хотите выйти?")
+    if (logout){
+      cookies.addCookies('role', "")
+      cookies.addCookies('login', "")
+      cookies.addCookies('accessToken', '')
+      cookies.addCookies('refreshToken', '')
+      cookies.addCookies('type', '')
+      navigate('/')
+    }
   }
 
   return (
