@@ -10,6 +10,7 @@ import AddRoomPage from "./pages/add_room/AddRoomPage";
 import DefaultLoggedPage from "./pages/default_logged_page/DefaultLoggedPage";
 import FacultyPage from "./pages/FacultyPage/FacultyPage";
 import AddFacultyPage from "./pages/AddFacultyPage/AddFacultyPage";
+import Settings from "./pages/settings/Settings"
 import TimetablePage from "./pages/TimetablePage/Timetable";
 
 const router = createBrowserRouter([
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: '/addFaculty',
     element: <AddFacultyPage/>
+  },
+  {
+    path: '/settings',
+    element: <Settings/>
   },
   {
     path: '/Timetable',

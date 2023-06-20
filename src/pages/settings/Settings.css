@@ -1,8 +1,7 @@
-.DefaultPage {
+.SettingsPage {
     background-image: url("/assets/backgrounds/BackgroundDefault.png");
     text-align: center;
     display: flex;
-    align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,23 +10,15 @@
     min-width: 102vh;
     height: 700px;
 }
-.h{
+
+.settings__heading{
+    margin-top: 80px;
     text-align: center;
     font-size: 30px;
     font-weight: normal;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
-.h__logged{
-    text-align: center;
-    font-size: 30px;
-    font-weight: normal;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-}
-
-.user__name{
-    text-align: center;
-    font-size: 25px;
-    font-weight: normal;
-    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+.settings__form{
+    margin-top: 100px;
 }

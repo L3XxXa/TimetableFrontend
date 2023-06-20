@@ -8,6 +8,9 @@
     transform: translate(0%, -250%);
 }
 
+.user__name{
+    transform: translate(180%, -3090%);
+}
 
 .h{
     transform: translate(0%, -850%);
