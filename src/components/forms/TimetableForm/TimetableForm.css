@@ -1,0 +1,77 @@
+
+th,td{
+    border: solid 0.1px #0001 !important;
+
+}
+
+table {
+    table-layout: auto;
+    width: auto;
+    color: #F1F1F1;
+}
+
+.time-table {
+    margin-bottom: 5px;
+    width: 80%;
+}
+.time-table tr {
+    height: auto;
+}
+.time-table tr td, .time-table tr td {
+    background-color: white;
+}
+.time-table tr th {
+    text-align: left;
+    padding-left: 10px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.time-table tr td {
+    text-align: left;
+    padding-left: 10px;
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.time-table tr th, .time-table tr td {
+    padding-left: 10px !important;
+}
+
+.time-table tr td {
+    font-size: 20px;
+    background-color: #F1F1F1 ;
+}
+.time-table tr {
+    height: 50px;
+    background-color: #6dbd46;
+    font-size: 18px;
+    color: white;
+}
+.time-table tr:not {
+    vertical-align: top;
+}
+.time-table tr:not td {
+    padding: 0px;
+}
+.col1 {
+    width: 10%;
+}
+.coln {
+    width: 15%;
+}
+.cell {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+
+}
+.cell:not {
+    border-top: 1px solid #000;
+    margin-top: 10px;
+    padding-top: 10px;
+
+}
+.cell:not:before{
+    border-top: none;
+}
