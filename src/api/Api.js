@@ -20,7 +20,7 @@ const auth = async (data) => {
     cookies.addCookies("refreshToken", response.data.refreshToken)
     cookies.addCookies("login", data.login)
   }).catch(error => {
-    console.log(error)
+    throw error
   })
   await getRoles(data.login)
 };

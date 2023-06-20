@@ -16,8 +16,11 @@ const LoginForm = () => {
       'password': password
     };
     console.log(loginData);
-    await api.auth(loginData);
-    navigate('/home');
+    await api.auth(loginData).then(() => {
+      navigate('/home');
+    }).catch(error => {
+      alert(error.response.data)
+    });
   }
 
   return (
