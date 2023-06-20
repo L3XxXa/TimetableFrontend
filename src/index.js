@@ -39,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: '/addFaculty',
     element: <AddFacultyPage/>
+  },
+  {
+    path: '/Timetable',
+    element: <TimetablePage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
