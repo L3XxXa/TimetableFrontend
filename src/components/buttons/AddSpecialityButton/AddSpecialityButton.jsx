@@ -13,6 +13,7 @@ const AddSpecialityButton = () => {
     const handleOpen2 = () => {
         setShow2(!show2);
     };
+
     return(
         <div>
             <h1 className="label">Добавить специализацию
@@ -34,6 +35,7 @@ const AddSpecialityButton = () => {
                         <div className="accordian-body2">
                             <CustomInputForAddFaculty placeholder={"Введите название факультета"} />
                         </div>
+
                     )}
                 </div>
             )}
@@ -42,8 +44,8 @@ const AddSpecialityButton = () => {
 
     );
 
-    const rootElement = document.getElementById("root");
-    ReactDOM.render(<AddSpecialityButton />, rootElement);
+    // const rootElement = document.getElementById("root");
+    // ReactDOM.render(<AddSpecialityButton />, rootElement);
 
 };
 

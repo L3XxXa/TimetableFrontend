@@ -18,7 +18,7 @@ const SettingsForm = () => {
     if (cookies.getCookies('role') === "ADMIN"){
       setVisible(true)
     }
-  })
+  }, [])
 
   function openAddUser(){
     navigate('/addUser')
