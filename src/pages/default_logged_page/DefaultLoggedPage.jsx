@@ -26,6 +26,10 @@ const DefaultLoggedPage = () => {
     navigate('/faculties')
   }
 
+  function openSettings(){
+    navigate('/settings')
+  }
+
   return (
     <div className="DefaultPage">
       <div className="container">
@@ -33,7 +37,7 @@ const DefaultLoggedPage = () => {
         <h1 className="h__logged">Расписание</h1>
         <TeacherTimetableButton   />
         <PersonalTimetableButton/>
-        <h2 className="user__name">{ login }</h2>
+        <h2 className="user__name" onClick={openSettings}>{ login }</h2>
       </div>
     </div>
   );
