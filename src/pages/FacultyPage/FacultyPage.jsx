@@ -18,10 +18,14 @@ const FacultyPage = () => {
     checkIfLogged()
   });
 
+  function openSetting(){
+    navigate('/settings')
+  }
+
   return (
             <div className="FacultyPage">
                 <FacultyPageForm />
-              <h2 className="user__name_fac">{ login }</h2>
+              <h2 className="user__name_fac" onClick={openSetting}>{ login }</h2>
             </div>
     );
 };
