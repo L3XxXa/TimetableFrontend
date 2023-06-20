@@ -27,6 +27,10 @@ const SettingsForm = () => {
     navigate('/addFaculty')
   }
 
+  function openAddRoom(){
+    navigate('/addRoom')
+  }
+
   function logout(){
     let logout = window.confirm("Вы действительно хотите выйти?")
     if (logout){
@@ -51,12 +55,13 @@ const SettingsForm = () => {
           <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
               <AddFacultyButtonSettings onClick={openAddFaculty} text={"Добавить факультет"} />
           </div>
+        <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
+          <AddRoomButtonSettings onClick={openAddRoom} text={"Добавить комнату"} />
+        </div>
           <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
-        <div className="add-room-button-button">
-          <AddRoomButtonSettings text={"Добавить комнату"} />
-        </div>
+
           <div className="exit-button-button">
               <ExitButtonSettings onClick={logout} text={"Выйти"} />
           </div>
