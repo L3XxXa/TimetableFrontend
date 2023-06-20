@@ -5,6 +5,7 @@ import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import CustomPasswordForAddUser from "../../inputs/CustomPasswordForAddUser";
 import CustomDropdown from "../../inputs/CustomDropdown";
 import api from "../../../api/Api";
+import {useNavigate} from "react-router-dom";
 
 const AddUserForm = () => {
   const[login, setLogin] = useState('')
@@ -22,6 +23,8 @@ const AddUserForm = () => {
   const handleChange = (event) => {
     setRole(event.target.value);
   };
+
+  const navigate = useNavigate()
 
   async function addUser(){
     let userRole = []
@@ -43,10 +46,13 @@ const AddUserForm = () => {
       'roles': userRole
     }
     console.log(data);
-    await api.addUser(data).catch(error => {
-      alert(error.response.data)
+    await api.addUser(data).then( () => {
+        alert(`Пользователь ${name + " " + surname} добавлен`)
+        navigate('/settings')
+      }
+    ).catch(error => {
+        alert(error.response.data)
     })
-    alert(`Пользователь ${name + " " + surname} добавлен`)
   }
   return (
     <div className="auth-form-container">
