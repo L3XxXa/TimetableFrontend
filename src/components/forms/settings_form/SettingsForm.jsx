@@ -8,6 +8,7 @@ import ExitButtonSettings from "../../buttons/ButtonsForSettings/ExitButtonSetti
 import GenerateButtonSettings from "../../buttons/ButtonsForSettings/GenerateButtonSettings";
 import cookies from "../../../cookies/Cookies";
 import {useNavigate} from "react-router-dom";
+import AddRoomButtonSettings from "../../buttons/ButtonsForSettings/AddRoomButtonSettings";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
@@ -53,6 +54,9 @@ const SettingsForm = () => {
           <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
+        <div className="add-room-button-button">
+          <AddRoomButtonSettings text={"Добавить комнату"} />
+        </div>
           <div className="exit-button-button">
               <ExitButtonSettings onClick={logout} text={"Выйти"} />
           </div>
