@@ -15,7 +15,7 @@ const AddFacultyForm = () => {
       }
       await api.addFaculty(data).then(
         () =>{
-          alert(`Факультет ${faculty} успешно добавлен`)
+          alert(`Факультет "${faculty}" успешно добавлен`)
           navigate('/settings')
         }
       ).catch(error => {

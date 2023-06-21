@@ -16,7 +16,7 @@ const AddSpecializationForm = () => {
       "name": spec1
     }
     await api.addSpecialization(data, faculty).then(() => {
-      alert("Специализация " + spec1 + " успешно добавлена")
+      alert("Специализация \"" + spec1 + "\" успешно добавлена")
       navigate('/settings')
     }).catch(error => {
       api.addSpecialization(data, faculty)
@@ -25,7 +25,7 @@ const AddSpecializationForm = () => {
 
   async function getFaculties(){
     let data = await api.getFaculties().catch(error => {
-      api.getFaculties()
+      getFaculties()
     })
     let returned = []
     data.data.forEach(faculty => {
@@ -51,7 +51,7 @@ const AddSpecializationForm = () => {
         handleChange(event)
       }
       }/>
-      <CustomInputForAddUser placeholder={"Введите логин"} value={spec1} onChange={event => {
+      <CustomInputForAddUser placeholder={"Введите название специализации"} value={spec1} onChange={event => {
         setSpec1(event.target.value)
       }
       }/>
