@@ -4,12 +4,13 @@ import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import CustomDropdown from "../../inputs/CustomDropdown";
 import AddUserButton from "../../buttons/add_user_button/AddUserButton";
 import api from "../../../api/Api";
+import {useNavigate} from "react-router-dom";
 
 const AddRoomForm = () => {
   const[roomName, setRoomName] = useState('')
   const[roomCapacity, setRoomCapacity] = useState('')
   const[roomType, setRoomType] = React.useState('1');
-
+  const navigate = useNavigate()
   const handleChange = (event) => {
     setRoomType(event.target.value);
   };
@@ -38,6 +39,7 @@ const AddRoomForm = () => {
       alert("Такая аудитория уже добавлена")
     })
     alert("Комната добавлена")
+    navigate('/settings')
   }
   const options = [
     {label: 'Лекторская', value: '1'},

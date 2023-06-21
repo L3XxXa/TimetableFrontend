@@ -411,6 +411,29 @@ const addFaculty = async(data) => {
   })
 }
 
+const addTeacher = async(data) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/teacher"
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addTeacher(data)
+    }
+    throw error
+  })
+}
+
 
 const addRoom = async (data) => {
   const accessToken = cookies.getCookies("accessToken")
@@ -452,7 +475,8 @@ const exportedFunctions = {
   addStudent,
   addSubject,
   getSubjects,
-  addLesson
+  addLesson,
+  addTeacher
 };
 
 export default exportedFunctions;

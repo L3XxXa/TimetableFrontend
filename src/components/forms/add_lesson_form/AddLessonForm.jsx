@@ -69,7 +69,7 @@ const AddLessonForm = () => {
     console.log(studyYear)
     await api.addLesson(data, subject).then(() => {
       alert("Предмет \"" + subject + "\" успешно добавлен")
-      // navigate('/settings')
+      navigate('/settings')
     }).catch(error => {
     })
   }

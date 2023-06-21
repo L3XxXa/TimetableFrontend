@@ -1,0 +1,9 @@
+@media screen and (min-width: 600px) {
+    .auth-form-container1 {
+        background: #F1F1F1;
+        padding: 5rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+}

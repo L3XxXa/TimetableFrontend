@@ -1,0 +1,12 @@
+.AddFaculty {
+    background-image: url("/assets/backgrounds/BackgroundAddUser.png");
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 99vh;
+    min-width: 102vh;
+}
