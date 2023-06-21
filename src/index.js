@@ -19,6 +19,8 @@ import AddGroupPage from "./pages/add_group/AddGroupPage";
 import TimetableGroupPage from "./pages/TimetableGroupsPage/TimetableGroupPage";
 import AddStudentPage from "./pages/add_student_page/AddStudentPage";
 import AddSubjectPage from "./pages/add_subject_page/AddSubjectPage";
+import AddLessonPage from "./pages/add_lesson_page/AddLessonPage";
+import AddTeacherPage from "./pages/AddTeacherPage/AddTeacherPage";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
   {
     path: '/addSubject',
     element: <AddSubjectPage/>
+  },
+  {
+    path: '/addLesson',
+    element: <AddLessonPage/>
+  },
+  {
+    path: '/addTeacher',
+    element: <AddTeacherPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

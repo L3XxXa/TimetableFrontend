@@ -24,7 +24,7 @@ const AddSubjectForm = () => {
     console.log(data)
     console.log(studyYear)
     await api.addSubject(data, studyYear).then(() => {
-      alert("Предмет \"" + subject + "\" успешно добавлена")
+      alert("Предмет \"" + subject + "\" успешно добавлен")
       navigate('/settings')
     }).catch(error => {
     })
