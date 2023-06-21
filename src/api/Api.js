@@ -103,6 +103,32 @@ const addUser = async (data) => {
   })
 };
 
+const addFaculty = async(data) => {
+  console.log("adding faculty")
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/faculty"
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+    console.log("response: " + response)
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addFaculty(data)
+    }
+    console.log(error)
+    throw error
+  })
+}
+
 const addRoom = async (data) => {
   console.log("Trying to add new room...")
   console.log(data)
@@ -135,7 +161,8 @@ const exportedFunctions = {
   refreshToken,
   addUser,
   addRoom,
-  getRoles
+  getRoles,
+  addFaculty
 };
 
 export default exportedFunctions;
