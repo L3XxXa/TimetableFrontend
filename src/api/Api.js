@@ -67,7 +67,7 @@ const getSpecializations = async (facultyId)=> {
   }).catch(error => {
     if (error.response.status === 403){
       refreshToken()
-      getFaculties()
+      getSpecializations(facultyId)
     }
   })
   return returnData
@@ -100,7 +100,44 @@ const getStudyYears = async (facultyId, specializationId)=> {
   }).catch(error => {
     if (error.response.status === 403){
       refreshToken()
-      getFaculties()
+      getStudyYears(facultyId, specializationId)
+    }
+  })
+  return returnData
+};
+
+const getGroups = async (facultyId, specializationId, studyYearId)=> {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    response.data.forEach(faculty => {
+      if (faculty.facultyId.toString() === facultyId){
+        faculty.specializations.forEach(spec => {
+          if (spec.specializationId.toString() === specializationId){
+            spec.studyYears.forEach(year => {
+              if (year.studyYearId.toString() === studyYearId){
+                year.groups.forEach(group => {
+                  console.log(group)
+                  returnData.push({label: group.number, value: group.groupId})
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  }).catch(error => {
+    if (error.response.status === 403){
+      refreshToken()
+      getGroups(facultyId, specializationId, studyYearId)
     }
   })
   return returnData
@@ -242,6 +279,30 @@ const addGroup = async (data, studyYearId) => {
   })
 };
 
+const addStudent = async (data, groupId) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/group/${groupId}/student`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addStudent(data)
+    }
+    throw error
+  })
+};
+
+
 const addFaculty = async(data) => {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -302,7 +363,9 @@ const exportedFunctions = {
   getSpecializations,
   addStudyYear,
   getStudyYears,
-  addGroup
+  addGroup,
+  getGroups,
+  addStudent
 };
 
 export default exportedFunctions;

@@ -62,45 +62,49 @@ const SettingsForm = () => {
     navigate('/addGroup')
   }
 
+  function openAddStudent(){
+    navigate('/addStudent')
+  }
+
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
           <CustomInputForSettings name={cookies.getCookies("login")}/>
           <label className="label2">Роль</label>
           <CustomInputForSettings2 role={cookies.getCookies("role")}/>
-          <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
+          <div style = {{ display: isVisible ? "block": "none" }}>
               <AddUserButtonSettings onClick={openAddUser} text={"Добавить пользователя"} />
           </div>
-          <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
+          <div style = {{ display: isVisible ? "block": "none" }}>
               <AddFacultyButtonSettings onClick={openAddFaculty} text={"Добавить факультет"} />
           </div>
 
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }} >
           <AddSpecializationButtonSettings text={"Добавить специализацию"} onClick={openAddSpecialization}/>
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }}>
           <AddYearButtonSettings text={"Добавить год обучения"} onClick={openAddStudyYear}/>
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }} >
           <AddGroupButtonSettings text={"Добавить группу"} onClick={openAddGroup}/>
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }}>
           <AddSubjButtonSettings text={"Добавить предмет"} />
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
-          <AddStudentButtonSettings text={"Добавить ученика"} />
+        <div style = {{ display: isVisible ? "block": "none" }} >
+          <AddStudentButtonSettings text={"Добавить ученика"} onClick={openAddStudent}/>
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }} >
           <AddTeacherButtonSettings text={"Добавить преподавателя"} />
         </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+        <div style = {{ display: isVisible ? "block": "none" }} >
           <AddLessonButtonSettings text={"Добавить урок"} />
         </div>
 
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
+        <div style = {{ display: isVisible ? "block": "none" }}>
           <AddRoomButtonSettings onClick={openAddRoom} text={"Добавить комнату"} />
         </div>
-          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+          <div style = {{ display: isVisible ? "block": "none" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
 
