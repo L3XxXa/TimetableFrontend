@@ -3,10 +3,8 @@ import cookies from "../cookies/Cookies";
 
 const baseUrl = 'http://localhost:8080';
 const auth = async (data) => {
-  console.log(data);
   const url = new URL(baseUrl);
   url.pathname = "api/v1/auth/login"
-  console.log(url.href)
   await axios({
     method: "post",
     url: url.href,
@@ -26,7 +24,6 @@ const auth = async (data) => {
 };
 
 const getFaculties = async ()=> {
-  console.log("Trying to get faculties")
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -40,7 +37,6 @@ const getFaculties = async ()=> {
   }).then(response => {
     returnData = response
   }).catch(error => {
-    console.log(error)
     if (error.response.status === 403){
       refreshToken()
       getFaculties()
@@ -50,7 +46,6 @@ const getFaculties = async ()=> {
 };
 
 const getSpecializations = async (facultyId)=> {
-  console.log("Trying to get specializations")
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -62,7 +57,6 @@ const getSpecializations = async (facultyId)=> {
       "Authorization": `${type} ${accessToken}`
     },
   }).then(response => {
-    console.log(`id ${facultyId}`)
     response.data.forEach(faculty => {
       if (faculty.facultyId.toString() === facultyId){
         faculty.specializations.forEach(spec => {
@@ -71,7 +65,39 @@ const getSpecializations = async (facultyId)=> {
       }
     })
   }).catch(error => {
-    console.log(error)
+    if (error.response.status === 403){
+      refreshToken()
+      getFaculties()
+    }
+  })
+  return returnData
+};
+
+const getStudyYears = async (facultyId, specializationId)=> {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    response.data.forEach(faculty => {
+      if (faculty.facultyId.toString() === facultyId){
+        faculty.specializations.forEach(spec => {
+          if (spec.specializationId.toString() === specializationId){
+            spec.studyYears.forEach(year => {
+              console.log(year)
+              returnData.push({label: year.year, value: year.studyYearId})
+            })
+          }
+        })
+      }
+    })
+  }).catch(error => {
     if (error.response.status === 403){
       refreshToken()
       getFaculties()
@@ -81,8 +107,6 @@ const getSpecializations = async (facultyId)=> {
 };
 
 const getRoles = async (data)=> {
-  console.log(data)
-  console.log("Trying to get role for user")
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -98,12 +122,10 @@ const getRoles = async (data)=> {
   }).then(response => {
     cookies.addCookies("role", response.data[0])
   }).catch(error => {
-    console.log(error)
   })
 };
 
 const refreshToken = async () => {
-  console.log("Trying to get new JWT")
   const type = cookies.getCookies("type")
   const accessToken = cookies.getCookies("accessToken")
   const refreshToken = cookies.getCookies("refreshToken")
@@ -120,11 +142,9 @@ const refreshToken = async () => {
       "refreshToken": refreshToken
     }
   }).then(response => {
-    console.log(response.data.type)
     cookies.addCookies("type", response.data.type)
     cookies.addCookies("accessToken", response.data.accessToken)
   }).catch(error => {
-    console.log(error)
   })
 };
 
@@ -132,8 +152,6 @@ const refreshToken = async () => {
 // 403 прилетает - обновляем токен
 
 const addUser = async (data) => {
-  console.log("Trying to add new user...")
-  console.log(data)
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -147,20 +165,16 @@ const addUser = async (data) => {
     },
     data: data
   }).then(response => {
-    console.log("response: " + response)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addUser(data)
     }
-    console.log(error)
     throw error
   })
 };
 
 const addSpecialization = async (data, facultyId) => {
-  console.log("Trying to add new specialization...")
-  console.log(data)
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -174,20 +188,15 @@ const addSpecialization = async (data, facultyId) => {
     },
     data: data
   }).then(response => {
-    console.log("response: " + response)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addSpecialization(data, facultyId)
     }
-    console.log(error)
     throw error
   })
 };
-
 const addStudyYear = async (data, specializationId) => {
-  console.log("Trying to add new study year...")
-  console.log(data)
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -201,19 +210,39 @@ const addStudyYear = async (data, specializationId) => {
     },
     data: data
   }).then(response => {
-    console.log("response: " + response)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addStudyYear(data)
     }
-    console.log(error)
+    throw error
+  })
+};
+
+const addGroup = async (data, studyYearId) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/studyYear/${studyYearId}/group`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addGroup(data)
+    }
     throw error
   })
 };
 
 const addFaculty = async(data) => {
-  console.log("adding faculty")
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -227,13 +256,11 @@ const addFaculty = async(data) => {
     },
     data: data
   }).then(response => {
-    console.log("response: " + response)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addFaculty(data)
     }
-    console.log(error)
     throw error
   })
 }
@@ -241,8 +268,6 @@ const addFaculty = async(data) => {
 
 
 const addRoom = async (data) => {
-  console.log("Trying to add new room...")
-  console.log(data)
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
   const url = new URL(baseUrl);
@@ -256,13 +281,11 @@ const addRoom = async (data) => {
     },
     data: data
   }).then(response => {
-    console.log("response: " + response)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addUser(data)
     }
-    console.log(error)
     throw error
   })
 };
@@ -277,7 +300,9 @@ const exportedFunctions = {
   getFaculties,
   addSpecialization,
   getSpecializations,
-  addStudyYear
+  addStudyYear,
+  getStudyYears,
+  addGroup
 };
 
 export default exportedFunctions;

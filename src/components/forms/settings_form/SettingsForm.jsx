@@ -58,6 +58,10 @@ const SettingsForm = () => {
     navigate('/addStudyYear')
   }
 
+  function openAddGroup(){
+    navigate('/addGroup')
+  }
+
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
@@ -78,7 +82,7 @@ const SettingsForm = () => {
           <AddYearButtonSettings text={"Добавить год обучения"} onClick={openAddStudyYear}/>
         </div>
         <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
-          <AddGroupButtonSettings text={"Добавить группу"} />
+          <AddGroupButtonSettings text={"Добавить группу"} onClick={openAddGroup}/>
         </div>
         <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
           <AddSubjButtonSettings text={"Добавить предмет"} />

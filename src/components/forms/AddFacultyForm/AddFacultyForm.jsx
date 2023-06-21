@@ -26,7 +26,8 @@ const AddFacultyForm = () => {
     return (
         <div className="auth-form-container1">
             <h2 className="h2">Добавление факультета</h2>
-            <CustomInputForAddFaculty placeholder={"Введите название факультета"} value={faculty}  onChange={event => {
+          <label className="label">Факультет</label>
+          <CustomInputForAddFaculty placeholder={"Введите название факультета"} value={faculty}  onChange={event => {
               setFaculty(event.target.value)
             }
             }/>

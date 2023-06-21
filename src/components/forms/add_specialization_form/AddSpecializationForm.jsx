@@ -51,6 +51,7 @@ const AddSpecializationForm = () => {
         handleChange(event)
       }
       }/>
+      <label className="label">Специализация</label>
       <CustomInputForAddUser placeholder={"Введите название специализации"} value={spec1} onChange={event => {
         setSpec1(event.target.value)
       }
