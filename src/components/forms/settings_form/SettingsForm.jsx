@@ -9,6 +9,13 @@ import GenerateButtonSettings from "../../buttons/ButtonsForSettings/GenerateBut
 import cookies from "../../../cookies/Cookies";
 import {useNavigate} from "react-router-dom";
 import AddRoomButtonSettings from "../../buttons/ButtonsForSettings/AddRoomButtonSettings";
+import AddSpecializationButtonSettings from "../../buttons/ButtonsForSettings/AddSpecializationButtonSettings";
+import AddYearButtonSettings from "../../buttons/ButtonsForSettings/AddYearButtonSettings";
+import AddGroupButtonSettings from "../../buttons/ButtonsForSettings/AddGroupButtonSettings";
+import AddSubjButtonSettings from "../../buttons/ButtonsForSettings/AddSubjButtonSettings";
+import AddStudentButtonSettings from "../../buttons/ButtonsForSettings/AddStudentButtonSettings";
+import AddTeacherButtonSettings from "../../buttons/ButtonsForSettings/AddTeacherButtonSettings";
+import AddLessonButtonSettings from "../../buttons/ButtonsForSettings/AddLessonButtonSettings";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
@@ -55,13 +62,33 @@ const SettingsForm = () => {
           <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
               <AddFacultyButtonSettings onClick={openAddFaculty} text={"Добавить факультет"} />
           </div>
-        <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
+         <div style = {{ visibility: isVisible ? "visible": "hidden" }}>
           <AddRoomButtonSettings onClick={openAddRoom} text={"Добавить комнату"} />
-        </div>
+         </div>
           <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
-
+         <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+          <AddSpecializationButtonSettings text={"Добавить специализацию"} />
+         </div>
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+              <AddGroupButtonSettings text={"Добавить группу"} />
+          </div>
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+              <AddSubjButtonSettings text={"Добавить предмет"} />
+          </div>
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+              <AddStudentButtonSettings text={"Добавить ученика"} />
+          </div>
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+              <AddTeacherButtonSettings text={"Добавить преподавателя"} />
+          </div>
+          <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+              <AddLessonButtonSettings text={"Добавить урок"} />
+          </div>
+        <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
+          <AddYearButtonSettings text={"Добавить год обучения"} />
+        </div>
           <div className="exit-button-button">
               <ExitButtonSettings onClick={logout} text={"Выйти"} />
           </div>
