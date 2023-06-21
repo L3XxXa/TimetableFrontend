@@ -1,0 +1,62 @@
+.row {
+    margin-right: 200px;
+    margin-left: -15px;
+
+}
+.row-no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+}
+.row-no-gutters [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+
+}
+
+.col-xs-6 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+}
+.degree_title {
+    font-size: 22px;
+    margin-bottom: 8px;
+
+}
+.degree_groups tr {
+    height: 30px;
+
+}
+.degree_groups tr td:not(:first-child) {
+    width: 91px;
+
+}
+.degree_groups tr td:not(:first-child) a {
+    color: #1bbfeb;
+    text-decoration: underline;
+    margin: 0 5px;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.degree_groups tr td:first-child {
+    width: 95px;
+}
+
+.t1{
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.t2{
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.t3{
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+.t4{
+     color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+ }
