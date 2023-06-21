@@ -66,6 +66,10 @@ const SettingsForm = () => {
     navigate('/addStudent')
   }
 
+  function openAddSubject(){
+    navigate('/addSubject')
+  }
+
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
@@ -89,7 +93,7 @@ const SettingsForm = () => {
           <AddGroupButtonSettings text={"Добавить группу"} onClick={openAddGroup}/>
         </div>
         <div style = {{ display: isVisible ? "block": "none" }}>
-          <AddSubjButtonSettings text={"Добавить предмет"} />
+          <AddSubjButtonSettings text={"Добавить предмет"} onClick={openAddSubject}/>
         </div>
         <div style = {{ display: isVisible ? "block": "none" }} >
           <AddStudentButtonSettings text={"Добавить ученика"} onClick={openAddStudent}/>

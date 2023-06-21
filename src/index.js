@@ -18,6 +18,7 @@ import AddGroupPage from "./pages/add_group/AddGroupPage";
 
 import TimetableGroupPage from "./pages/TimetableGroupsPage/TimetableGroupPage";
 import AddStudentPage from "./pages/add_student_page/AddStudentPage";
+import AddSubjectPage from "./pages/add_subject_page/AddSubjectPage";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: '/addStudent',
     element: <AddStudentPage/>
+  },
+  {
+    path: '/addSubject',
+    element: <AddSubjectPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

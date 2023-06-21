@@ -5,25 +5,26 @@ import api from "../../../api/Api";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import {useNavigate} from "react-router-dom";
 
-const AddStudentForm = () => {
+const AddSubjectForm = () => {
   const[faculty, setFaculty] = React.useState('0');
-  const [specialization, setSpecialization] = useState("0")
+  const [specialization, setSpecialization] = useState("")
   const [studyYear, setStudyYear] = useState(0)
   const[optionsFaculty, setOptionsFaculty] = useState([])
   const[optionsSpecialization, setOptionsSpecialization] = useState([])
   const[optionsStudyYear, setOptionsStudyYear] = useState([])
-  const[optionsGroup, setOptionsGroup] = useState([])
-  const [group, setGroup] = useState("0")
-  const [studentName, setStudentName] = useState("")
-  const [studentSurname, setStudentSurname] = useState("")
+  const [subject, setSubject] = useState("")
   const navigate = useNavigate()
 
-  async function addStudent(){
+  async function addGroup(){
+    console.log(specialization)
+    await api.refreshToken()
     let data = {
-      "name": `${studentName} ${studentSurname}`
+      "name": subject
     }
-    await api.addStudent(data, group).then(() => {
-      alert("Студент \"" + studentSurname + "\" успешно добавлен")
+    console.log(data)
+    console.log(studyYear)
+    await api.addSubject(data, studyYear).then(() => {
+      alert("Предмет \"" + subject + "\" успешно добавлена")
       navigate('/settings')
     }).catch(error => {
     })
@@ -55,13 +56,6 @@ const AddStudentForm = () => {
     setOptionsStudyYear(data)
   }
 
-  async function getGroup(val){
-    let data = await api.getGroups(faculty, specialization, val)
-    console.log(data)
-    setGroup(data[0].value)
-    setOptionsGroup(data)
-  }
-
 
   useEffect(()=> {
     getFaculties()
@@ -71,10 +65,13 @@ const AddStudentForm = () => {
     setFaculty(event.target.value);
   };
 
+  const handleChangeSpecialization = (event) => {
+    setSpecialization(event.target.value);
+  };
 
   return (
     <div className="auth-form-container1">
-      <h2 className="h2">Добавление группы</h2>
+      <h2 className="h2">Добавление предмета</h2>
       <label className="label">Факультет</label>
       <CustomDropdown placeholder={"Выберите факультет"} options={optionsFaculty} handleChange={event => {
         handleChangeFaculty(event)
@@ -90,27 +87,16 @@ const AddStudentForm = () => {
       <label className="label">Год обучения</label>
       <CustomDropdown placeholder={"Выберите год обучения"} options={optionsStudyYear} handleChange={event => {
         setStudyYear(event.target.value);
-        getGroup(event.target.value)
       }
       }/>
-      <label className="label">Группа</label>
-      <CustomDropdown placeholder={"Выберите группу"} options={optionsGroup} handleChange={event => {
-        setGroup(event.target.value);
+      <label className="label">Название предмета</label>
+      <CustomInputForAddUser placeholder={"Введите название предмета"} value={subject} onChange={event => {
+        setSubject(event.target.value)
       }
       }/>
-      <label className="label">Имя студента</label>
-      <CustomInputForAddUser placeholder={"Введите имя студента"} value={studentName} onChange={event => {
-        setStudentName(event.target.value)
-      }
-      }/>
-      <label className="label">Фамилия студента</label>
-      <CustomInputForAddUser placeholder={"Введите фамилию студента"} value={studentSurname} onChange={event => {
-        setStudentSurname(event.target.value)
-      }
-      }/>
-      <AddUserButton text="Добавить студента" onClick={addStudent}/>
+      <AddUserButton text="Добавить предмет" onClick={addGroup}/>
     </div>
   );
 };
 
-export default AddStudentForm;
+export default AddSubjectForm;

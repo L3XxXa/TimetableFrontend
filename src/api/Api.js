@@ -250,7 +250,7 @@ const addStudyYear = async (data, specializationId) => {
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
-      addStudyYear(data)
+      addStudyYear(data, specializationId)
     }
     throw error
   })
@@ -273,7 +273,30 @@ const addGroup = async (data, studyYearId) => {
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
-      addGroup(data)
+      addGroup(data, studyYearId)
+    }
+    throw error
+  })
+};
+
+const addSubject = async (data, studyYearId) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/studyYear/${studyYearId}/subject`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addSubject(data, studyYearId)
     }
     throw error
   })
@@ -327,7 +350,6 @@ const addFaculty = async(data) => {
 }
 
 
-
 const addRoom = async (data) => {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -365,8 +387,8 @@ const exportedFunctions = {
   getStudyYears,
   addGroup,
   getGroups,
-  addStudent
+  addStudent,
+  addSubject
 };
 
 export default exportedFunctions;
-
