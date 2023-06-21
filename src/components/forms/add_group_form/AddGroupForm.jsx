@@ -5,27 +5,30 @@ import api from "../../../api/Api";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import {useNavigate} from "react-router-dom";
 
-const AddStudyYearForm = () => {
+const AddGroupForm = () => {
   const[faculty, setFaculty] = React.useState('0');
-  const[specialization, setSpecialization] = React.useState('0');
+  const [specialization, setSpecialization] = useState("")
+  const [studyYear, setStudyYear] = useState(0)
   const[optionsFaculty, setOptionsFaculty] = useState([])
-  const [studyYear, setStudyYear] = useState()
   const[optionsSpecialization, setOptionsSpecialization] = useState([])
+  const[optionsStudyYear, setOptionsStudyYear] = useState([])
+  const [group, setGroup] = useState("")
   const navigate = useNavigate()
 
-  async function addSpecialization(){
+  async function addGroup(){
     console.log(specialization)
     let data = {
-      "year": studyYear.N
+      "number": group
     }
     console.log(data)
-    await api.addStudyYear(data, specialization).then(() => {
-      alert("Год обучения \"" + studyYear + "\" успешно добавлен")
+    console.log(studyYear)
+    await api.addGroup(data, studyYear).then(() => {
+      alert("Группа \"" + group + "\" успешно добавлена")
       navigate('/settings')
     }).catch(error => {
-      api.addStudyYear(data, specialization)
     })
   }
+
 
   async function getFaculties(){
     await api.refreshToken()
@@ -39,30 +42,35 @@ const AddStudyYearForm = () => {
   }
 
   async function getSpecializations(val){
-    console.log(val)
     await api.refreshToken()
     let data = await api.getSpecializations(val)
     setSpecialization(data[0].value)
     setOptionsSpecialization(data)
   }
 
+  async function getStudyYears(val){
+    let data = await api.getStudyYears(faculty, val)
+    console.log(data)
+    setStudyYear(data[0].value)
+    setOptionsStudyYear(data)
+  }
+
+
   useEffect(()=> {
     getFaculties()
   }, [])
-
 
   const handleChangeFaculty = (event) => {
     setFaculty(event.target.value);
   };
 
   const handleChangeSpecialization = (event) => {
-    console.log(event.target.value)
     setSpecialization(event.target.value);
   };
 
   return (
     <div className="auth-form-container1">
-      <h2 className="h2">Добавление года обучения</h2>
+      <h2 className="h2">Добавление группы</h2>
       <label className="label">Факультет</label>
       <CustomDropdown placeholder={"Выберите факультет"} options={optionsFaculty} handleChange={event => {
         handleChangeFaculty(event)
@@ -72,16 +80,22 @@ const AddStudyYearForm = () => {
       <label className="label">Специализация</label>
       <CustomDropdown placeholder={"Выберите специализацию"} options={optionsSpecialization} handleChange={event => {
         setSpecialization(event.target.value);
+        getStudyYears(event.target.value)
       }
       }/>
       <label className="label">Год обучения</label>
-      <CustomInputForAddUser placeholder={"Введите год обучения"} value={studyYear} onChange={event => {
-        setStudyYear(event.target.value)
+      <CustomDropdown placeholder={"Выберите год обучения"} options={optionsStudyYear} handleChange={event => {
+        setStudyYear(event.target.value);
       }
       }/>
-      <AddUserButton text="Добавить год обучения" onClick={addSpecialization}/>
+      <label className="label">Номер группы</label>
+      <CustomInputForAddUser placeholder={"Введите номер группы"} value={group} onChange={event => {
+        setGroup(event.target.value)
+      }
+      }/>
+      <AddUserButton text="Добавить год обучения" onClick={addGroup}/>
     </div>
   );
 };
 
-export default AddStudyYearForm;
+export default AddGroupForm;

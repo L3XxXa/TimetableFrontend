@@ -14,6 +14,7 @@ import TimetablePage from "./pages/TimetablePage/Timetable";
 import Settings from "./pages/settings/Settings";
 import AddSpecializationPage from "./pages/add_specialization_page/AddSpecializationPage";
 import AddStudyYearPage from "./pages/add_study_year/AddStudyYearPage";
+import AddGroupPage from "./pages/add_group/AddGroupPage";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
   {
     path: '/addStudyYear',
     element: <AddStudyYearPage/>
+  },
+  {
+    path: '/addGroup',
+    element: <AddGroupPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));
