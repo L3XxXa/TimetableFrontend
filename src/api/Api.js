@@ -25,6 +25,30 @@ const auth = async (data) => {
   await getRoles(data.login)
 };
 
+const getFaculties = async ()=> {
+  console.log("Trying to get faculties")
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    returnData = response
+  }).catch(error => {
+    console.log(error)
+    if (error.response.status === 403){
+      refreshToken()
+      getFaculties()
+    }
+  })
+  return returnData
+};
+
 const getRoles = async (data)=> {
   console.log(data)
   console.log("Trying to get role for user")
@@ -103,6 +127,34 @@ const addUser = async (data) => {
   })
 };
 
+const addSpecialization = async (data, facultyId) => {
+  console.log("Trying to add new specialization...")
+  console.log(data)
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/faculty/${facultyId}/specialization`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+    console.log("response: " + response)
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addUser(data)
+    }
+    console.log(error)
+    throw error
+  })
+};
+
+
 const addFaculty = async(data) => {
   console.log("adding faculty")
   const accessToken = cookies.getCookies("accessToken")
@@ -128,6 +180,8 @@ const addFaculty = async(data) => {
     throw error
   })
 }
+
+
 
 const addRoom = async (data) => {
   console.log("Trying to add new room...")
@@ -162,7 +216,9 @@ const exportedFunctions = {
   addUser,
   addRoom,
   getRoles,
-  addFaculty
+  addFaculty,
+  getFaculties,
+  addSpecialization
 };
 
 export default exportedFunctions;
