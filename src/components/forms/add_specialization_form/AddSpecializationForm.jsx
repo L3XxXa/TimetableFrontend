@@ -24,8 +24,8 @@ const AddSpecializationForm = () => {
   }
 
   async function getFaculties(){
+    await api.refreshToken()
     let data = await api.getFaculties().catch(error => {
-      getFaculties()
     })
     let returned = []
     data.data.forEach(faculty => {
