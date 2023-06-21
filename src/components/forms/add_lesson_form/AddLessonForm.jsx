@@ -14,7 +14,9 @@ const AddLessonForm = () => {
   const[optionsSpecialization, setOptionsSpecialization] = useState([])
   const[optionsStudyYear, setOptionsStudyYear] = useState([])
   const[optionsSubjects, setOptionsSubjects] = useState([])
+  const[optionsTeachers, setOptionsTeachers] = useState([])
   const [subject, setSubject] = useState("")
+  const [teacher, setTeacher] = useState("")
   const navigate = useNavigate()
   const[roomType, setRoomType] = React.useState('1');
 
@@ -63,12 +65,13 @@ const AddLessonForm = () => {
     let data = {
       "name": lessonName,
       "roomType": room,
-      "subjectType": lessonType
+      "subjectType": lessonType,
+      "teacher": teacher
     }
     console.log(data)
     console.log(studyYear)
     await api.addLesson(data, subject).then(() => {
-      alert("Предмет \"" + subject + "\" успешно добавлен")
+      alert("Занятик \"" + lessonName + "\" успешно добавлено")
       navigate('/settings')
     }).catch(error => {
     })
@@ -108,8 +111,15 @@ const AddLessonForm = () => {
     setOptionsSubjects(data)
   }
 
+  async function getTeachers(){
+    let data = await api.getTeachers()
+    setTeacher(data[0].value)
+    setOptionsTeachers(data)
+  }
+
   useEffect(()=> {
     getFaculties()
+    getTeachers()
   }, [])
 
   const handleChangeFaculty = (event) => {
@@ -149,6 +159,11 @@ const AddLessonForm = () => {
       <label className="label">Название занятия</label>
       <CustomInputForAddUser placeholder={"Введите название занятия"} value={lessonName} onChange={event => {
         setLessonName(event.target.value)
+      }
+      }/>
+      <label className="label">Преподаватель</label>
+      <CustomDropdown placeholder={"Выберите преподавателя"} options={optionsTeachers} handleChange={event => {
+        setTeacher(event.target.value)
       }
       }/>
       <label className="label">Тип занятия</label>

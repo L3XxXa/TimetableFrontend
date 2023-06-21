@@ -27,7 +27,7 @@ const AddTeacherForm = () => {
 
     return (
         <div className="auth-form-container1">
-            <h2 className="h2">Добавление преподавателя</h2>
+          <h2 className="h2">Добавление преподавателя</h2>
           <label className="label">Фамилия преподавателя</label>
           <CustomInputForAddFaculty placeholder={"Введите фамилию преподавателя"} value={teacherSurname}  onChange={event => {
             setTeacherSurname(event.target.value)
@@ -37,8 +37,7 @@ const AddTeacherForm = () => {
           <CustomInputForAddFaculty placeholder={"Введите имя преподавателя"} value={teacherName}  onChange={event => {
               setTeacherName(event.target.value)
             }
-            }/>
-
+          }/>
           <label className="label">Отчество преподавателя</label>
           <CustomInputForAddFaculty placeholder={"Введите отчество преподавателя"} value={teacherThirdName}  onChange={event => {
             setTeacherThirdName(event.target.value)

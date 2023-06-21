@@ -45,6 +45,30 @@ const getFaculties = async ()=> {
   return returnData
 };
 
+const getTeachers = async ()=> {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/teacher"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    response.data.forEach(d => {
+      returnData.push({label: d.name, value: d.teacherId})
+    })
+  }).catch(error => {
+    if (error.response.status === 403){
+      refreshToken()
+      getTeachers()
+    }
+  })
+  return returnData
+};
+
 const getSpecializations = async (facultyId)=> {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -476,7 +500,8 @@ const exportedFunctions = {
   addSubject,
   getSubjects,
   addLesson,
-  addTeacher
+  addTeacher,
+  getTeachers
 };
 
 export default exportedFunctions;
