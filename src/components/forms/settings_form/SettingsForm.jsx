@@ -54,6 +54,10 @@ const SettingsForm = () => {
     }
   }
 
+  function openAddStudyYear(){
+    navigate('/addStudyYear')
+  }
+
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
@@ -71,7 +75,7 @@ const SettingsForm = () => {
           <AddSpecializationButtonSettings text={"Добавить специализацию"} onClick={openAddSpecialization}/>
         </div>
         <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
-          <AddYearButtonSettings text={"Добавить год обучения"} />
+          <AddYearButtonSettings text={"Добавить год обучения"} onClick={openAddStudyYear}/>
         </div>
         <div style = {{ visibility: isVisible ? "visible": "hidden" }} >
           <AddGroupButtonSettings text={"Добавить группу"} />

@@ -49,6 +49,37 @@ const getFaculties = async ()=> {
   return returnData
 };
 
+const getSpecializations = async (facultyId)=> {
+  console.log("Trying to get specializations")
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    console.log(`id ${facultyId}`)
+    response.data.forEach(faculty => {
+      if (faculty.facultyId.toString() === facultyId){
+        faculty.specializations.forEach(spec => {
+          returnData.push({label: spec.name, value: spec.specializationId})
+        })
+      }
+    })
+  }).catch(error => {
+    console.log(error)
+    if (error.response.status === 403){
+      refreshToken()
+      getFaculties()
+    }
+  })
+  return returnData
+};
+
 const getRoles = async (data)=> {
   console.log(data)
   console.log("Trying to get role for user")
@@ -147,13 +178,39 @@ const addSpecialization = async (data, facultyId) => {
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
-      addUser(data)
+      addSpecialization(data, facultyId)
     }
     console.log(error)
     throw error
   })
 };
 
+const addStudyYear = async (data, specializationId) => {
+  console.log("Trying to add new study year...")
+  console.log(data)
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/specialization/${specializationId}/studyYear`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+    console.log("response: " + response)
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addStudyYear(data)
+    }
+    console.log(error)
+    throw error
+  })
+};
 
 const addFaculty = async(data) => {
   console.log("adding faculty")
@@ -218,7 +275,9 @@ const exportedFunctions = {
   getRoles,
   addFaculty,
   getFaculties,
-  addSpecialization
+  addSpecialization,
+  getSpecializations,
+  addStudyYear
 };
 
 export default exportedFunctions;
