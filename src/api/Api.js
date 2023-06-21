@@ -143,6 +143,43 @@ const getGroups = async (facultyId, specializationId, studyYearId)=> {
   return returnData
 };
 
+const getSubjects = async (facultyId, specializationId, studyYearId)=> {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    response.data.forEach(faculty => {
+      if (faculty.facultyId.toString() === facultyId){
+        faculty.specializations.forEach(spec => {
+          if (spec.specializationId.toString() === specializationId){
+            spec.studyYears.forEach(year => {
+              if (year.studyYearId.toString() === studyYearId){
+                year.subjects.forEach(subject => {
+                  console.log(subject)
+                  returnData.push({label: subject.name, value: subject.subjectId})
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  }).catch(error => {
+    if (error.response.status === 403){
+      refreshToken()
+      getGroups(facultyId, specializationId, studyYearId)
+    }
+  })
+  return returnData
+};
+
 const getRoles = async (data)=> {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -256,6 +293,8 @@ const addStudyYear = async (data, specializationId) => {
   })
 };
 
+
+
 const addGroup = async (data, studyYearId) => {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -297,6 +336,29 @@ const addSubject = async (data, studyYearId) => {
     if(error.response.status === 403){
       refreshToken()
       addSubject(data, studyYearId)
+    }
+    throw error
+  })
+};
+
+const addLesson = async (data, subjectId) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/subject/${subjectId}/lesson`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    data: data
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addLesson(data, subjectId)
     }
     throw error
   })
@@ -388,7 +450,9 @@ const exportedFunctions = {
   addGroup,
   getGroups,
   addStudent,
-  addSubject
+  addSubject,
+  getSubjects,
+  addLesson
 };
 
 export default exportedFunctions;

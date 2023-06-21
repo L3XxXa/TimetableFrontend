@@ -70,6 +70,10 @@ const SettingsForm = () => {
     navigate('/addSubject')
   }
 
+  function openAddLesson(){
+    navigate('/addLesson')
+  }
+
   return (
       <div className="settings-form-container">
         <label className="label1">Имя пользователя</label>
@@ -102,7 +106,7 @@ const SettingsForm = () => {
           <AddTeacherButtonSettings text={"Добавить преподавателя"} />
         </div>
         <div style = {{ display: isVisible ? "block": "none" }} >
-          <AddLessonButtonSettings text={"Добавить урок"} />
+          <AddLessonButtonSettings text={"Добавить урок"} onClick={openAddLesson}/>
         </div>
 
         <div style = {{ display: isVisible ? "block": "none" }}>

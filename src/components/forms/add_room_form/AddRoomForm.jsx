@@ -16,7 +16,7 @@ const AddRoomForm = () => {
 
   async function addRoom() {
     let room
-    switch (room) {
+    switch (roomType) {
       case '1': {
         room = "LECTURE"
         break
@@ -31,7 +31,7 @@ const AddRoomForm = () => {
     }
     let data = {
       "capacity": roomCapacity,
-      "roomType": roomType,
+      "roomType": room,
       "number": roomName
     }
     await api.addRoom(data).catch(error => {
