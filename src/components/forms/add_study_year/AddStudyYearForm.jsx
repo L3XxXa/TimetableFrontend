@@ -16,7 +16,7 @@ const AddStudyYearForm = () => {
   async function addSpecialization(){
     console.log(specialization)
     let data = {
-      "year": studyYear.N
+      "year": studyYear
     }
     console.log(data)
     await api.addStudyYear(data, specialization).then(() => {
