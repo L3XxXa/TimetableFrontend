@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './AddFacultyForm.css'
 import CustomInputForAddFaculty from "../../inputs/CustomInputForAddFaculty";
 // import AddSpecialityButton from "../../buttons/AddSpecialityButton/AddSpecialityButton";
-import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import AddButton from "../../buttons/add_user_button/AddButton";
 import api from "../../../api/Api";
 import {useNavigate} from "react-router-dom";
 
@@ -34,7 +34,7 @@ const AddFacultyForm = () => {
             {/*<div className="add-speciality-button">*/}
             {/*    <AddSpecialityButton/>*/}
             {/*</div>*/}
-          <AddUserButton text="Добавить факультет" onClick={addFaculty}/>
+          <AddButton text="Добавить факультет" onClick={addFaculty}/>
           </div>
 
     );

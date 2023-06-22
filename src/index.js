@@ -22,6 +22,7 @@ import AddSubjectPage from "./pages/add_subject_page/AddSubjectPage";
 import AddLessonPage from "./pages/add_lesson_page/AddLessonPage";
 import AddTeacherPage from "./pages/AddTeacherPage/AddTeacherPage";
 import TeachersPage from "./pages/teachers_page/TeachersPage";
+import AddAdminPage from "./pages/add_admin_page/AddAdminPage";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +104,10 @@ const router = createBrowserRouter([
   {
     path: '/addTeacher',
     element: <AddTeacherPage/>
+  },
+  {
+    path: '/addAdmin',
+    element: <AddAdminPage/>
   }
 ])
 const root = ReactDOM.createRoot(document.getElementById('root'));

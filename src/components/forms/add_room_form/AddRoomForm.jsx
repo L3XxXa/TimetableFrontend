@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "./AddRoomForm.css"
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import CustomDropdown from "../../inputs/CustomDropdown";
-import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import AddButton from "../../buttons/add_user_button/AddButton";
 import api from "../../../api/Api";
 import {useNavigate} from "react-router-dom";
 
@@ -66,7 +66,7 @@ const AddRoomForm = () => {
         }
       }/>
       <div className="add-user-button">
-        <AddUserButton text={"Добавить"} onClick={addRoom}/>
+        <AddButton text={"Добавить"} onClick={addRoom}/>
       </div>
     </div>
   );

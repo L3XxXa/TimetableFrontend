@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import AddButton from "../../buttons/add_user_button/AddButton";
 import CustomDropdown from "../../inputs/CustomDropdown";
 import api from "../../../api/Api";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
@@ -93,7 +93,7 @@ const AddGroupForm = () => {
         setGroup(event.target.value)
       }
       }/>
-      <AddUserButton text="Добавить группу" onClick={addGroup}/>
+      <AddButton text="Добавить группу" onClick={addGroup}/>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import AddButton from "../../buttons/add_user_button/AddButton";
 import CustomDropdown from "../../inputs/CustomDropdown";
 import api from "../../../api/Api";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
@@ -108,7 +108,7 @@ const AddStudentForm = () => {
         setStudentSurname(event.target.value)
       }
       }/>
-      <AddUserButton text="Добавить студента" onClick={addStudent}/>
+      <AddButton text="Добавить студента" onClick={addStudent}/>
     </div>
   );
 };
