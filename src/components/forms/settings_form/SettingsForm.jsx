@@ -18,6 +18,7 @@ import AddTeacherButtonSettings from "../../buttons/ButtonsForSettings/AddTeache
 import AddLessonButtonSettings from "../../buttons/ButtonsForSettings/AddLessonButtonSettings";
 import GoBackButtonSettings from "../../buttons/go_back_button/GoBackButtonSettings";
 import AddAdminButton from "../../buttons/ButtonsForSettings/AddAdminButton";
+import api from "../../../api/Api";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
@@ -88,6 +89,11 @@ const SettingsForm = () => {
       navigate('/addAdmin')
   }
 
+  async function createTimetable(){
+      alert("Алгоритм составления расписания запущен")
+      await api.generateAlgo()
+  }
+
   return (
       <div className="settings-form-container">
           <div style={{transform: "translate(0%, -100%)"}}>
@@ -133,7 +139,7 @@ const SettingsForm = () => {
           <AddRoomButtonSettings onClick={openAddRoom} text={"Добавить комнату"} />
         </div>
           <div style = {{ display: isVisible ? "block": "none" }} >
-              <GenerateButtonSettings text={"Сгенерировать расписание"} />
+              <GenerateButtonSettings text={"Сгенерировать расписание"} onClick={createTimetable}/>
           </div>
           <div className="exit-button-button">
               <ExitButtonSettings onClick={logout} text={"Выйти"} />

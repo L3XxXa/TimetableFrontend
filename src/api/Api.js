@@ -258,6 +258,66 @@ const getRoles = async (data)=> {
   })
 };
 
+const generateAlgo = async ()=> {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v321/generate"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+  }).catch(error => {
+    console.log(error)
+  })
+};
+
+const getTimetableByGroup = async (group)=> {
+  let returnData
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/timetable/"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    params: {
+      group: group
+    }
+  }).then(response => {
+    returnData = response.data
+  }).catch(error => {
+    console.log(error)
+  })
+  return returnData
+};
+
+const getTimetableByTeacher = async (teacher)=> {
+  let returnData
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = "api/v1/timetable/"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+    params: {
+      teacher: teacher
+    }
+  }).then(response => {
+    returnData = response.data
+  }).catch(error => {
+    console.log(error)
+  })
+  return returnData
+};
+
 const refreshToken = async () => {
   const type = cookies.getCookies("type")
   const accessToken = cookies.getCookies("accessToken")
@@ -306,6 +366,8 @@ const addUser = async (data) => {
     throw error
   })
 };
+
+
 
 const addSpecialization = async (data, facultyId) => {
   const accessToken = cookies.getCookies("accessToken")
@@ -560,7 +622,10 @@ const exportedFunctions = {
   addLesson,
   addTeacher,
   getTeachers,
-  getGroupsByFaculty
+  getGroupsByFaculty,
+  generateAlgo,
+  getTimetableByGroup,
+  getTimetableByTeacher
 };
 
 export default exportedFunctions;

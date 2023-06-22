@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./TeachersForm.css"
 import api from "../../../api/Api";
-import {useNavigate} from "react-router-dom";
+import {useFetcher, useNavigate} from "react-router-dom";
 
 const TeachersForm = () => {
     const [teachers, setTeacher] = useState([{"name": "zhmikh"}])
@@ -22,7 +22,16 @@ const TeachersForm = () => {
         data.forEach(teacher => {
             teachersTemp.push({"name": teacher.label})
         })
-        setTeacher(teachersTemp)
+        let sorted = teachersTemp.sort((a, b) => {
+            if (a.name.toLowerCase() < b.name.toLowerCase()){
+                return -1
+            }
+            if (a.name.toLowerCase() > b.name.toLowerCase()){
+                return 1
+            }
+            return 0
+        })
+        setTeacher(sorted)
     }
 
     function onItemClick(event){
