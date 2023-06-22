@@ -379,10 +379,33 @@ const addLesson = async (data, subjectId) => {
     },
     data: data
   }).then(response => {
+    addTeacherToLesson(data.teacher, response.data.lessonId)
   }).catch(error => {
     if(error.response.status === 403){
       refreshToken()
       addLesson(data, subjectId)
+    }
+    throw error
+  })
+};
+
+const addTeacherToLesson = async (teacherId, lessonId) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  url.pathname = `api/v1/teacher/${teacherId}/lessons/${lessonId}`
+  await axios({
+    method: "post",
+    url: url.href,
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+  }).catch(error => {
+    if(error.response.status === 403){
+      refreshToken()
+      addTeacherToLesson(teacherId, lessonId)
     }
     throw error
   })

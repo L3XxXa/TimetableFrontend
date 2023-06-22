@@ -71,7 +71,7 @@ const AddLessonForm = () => {
     console.log(data)
     console.log(studyYear)
     await api.addLesson(data, subject).then(() => {
-      alert("Занятик \"" + lessonName + "\" успешно добавлено")
+      alert("Занятие \"" + lessonName + "\" успешно добавлено")
       navigate('/settings')
     }).catch(error => {
     })
