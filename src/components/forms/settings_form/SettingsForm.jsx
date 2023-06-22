@@ -78,8 +78,15 @@ const SettingsForm = () => {
     navigate('/addTeacher')
   }
 
+  function openHome(){
+      navigate('/home')
+  }
+
   return (
       <div className="settings-form-container">
+          <div style={{transform: "translate(0%, -100%)"}}>
+            <GenerateButtonSettings text={"Назад"} onClick={openHome}/>
+          </div>
         <label className="label1">Имя пользователя</label>
           <CustomInputForSettings name={cookies.getCookies("login")}/>
           <label className="label2">Роль</label>

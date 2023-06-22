@@ -9,12 +9,14 @@
     position: relative;
     min-height: 99vh;
     min-width: 102vh;
+    height: 200px;
 }
 .w1{
     text-align: center;
     font-size: 30px;
     font-weight: normal;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    transform: translate(139%, -900%);
+    margin-left: 3%;
+    margin-top: 3%;
 }
 
