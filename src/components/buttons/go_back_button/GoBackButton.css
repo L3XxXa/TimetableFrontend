@@ -1,0 +1,12 @@
+.generate-button-settings {
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #D8D8D8;
+    color: black;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 51%;
+    transform: translate(-75%, 50%);
+}
