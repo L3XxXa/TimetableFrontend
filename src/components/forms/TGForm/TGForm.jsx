@@ -48,7 +48,7 @@ const TGForm = (props) => {
 
     function onItemClick(event){
         console.log(event.target.id)
-        navigate(`/timetable/${event.target.id}`)
+        navigate(`/timetable/groups/${event.target.id}`)
     }
     return (
       <div className="timetableGroups-form-container">

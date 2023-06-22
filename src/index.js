@@ -57,7 +57,15 @@ const router = createBrowserRouter([
     element: <Settings/>
   },
   {
-    path: '/timetable/:type',
+    path: '/timetable/personal',
+    element: <TimetablePage/>
+  },
+  {
+    path: '/timetable/groups/:group',
+    element: <TimetablePage/>
+  },
+  {
+    path: '/timetable/teachers/:teacher',
     element: <TimetablePage/>
   },
   {
