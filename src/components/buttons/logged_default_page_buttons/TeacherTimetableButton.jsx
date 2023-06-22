@@ -2,10 +2,10 @@ import React from 'react';
 import "./TTB.css"
 
 
-const TeacherTimetableButton = () => {
+const TeacherTimetableButton = (props) => {
     return (
         <div>
-            <button className="TTBlogged" > </button>
+            <button className="TTBlogged" onClick={props.onClick}> </button>
         </div>
     );
 };

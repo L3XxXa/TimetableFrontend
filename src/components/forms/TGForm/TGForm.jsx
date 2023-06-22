@@ -10,7 +10,6 @@ const TGForm = (props) => {
 
 
     async function setGroupsRef(){
-        await api.refreshToken()
         let data = await api.getGroupsByFaculty(props.faculty)
         return data
     }
@@ -44,10 +43,6 @@ const TGForm = (props) => {
         setSecondYear(secondYearGroups)
         setThirdYear(thirdYearGroups)
         setFourthYear(fourthYearGroups)
-    }
-
-    function openTimetable(event){
-        alert("ДАБЛЯТЬ")
     }
 
     return (
