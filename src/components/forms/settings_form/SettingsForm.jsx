@@ -16,6 +16,7 @@ import AddSubjButtonSettings from "../../buttons/ButtonsForSettings/AddSubjButto
 import AddStudentButtonSettings from "../../buttons/ButtonsForSettings/AddStudentButtonSettings";
 import AddTeacherButtonSettings from "../../buttons/ButtonsForSettings/AddTeacherButtonSettings";
 import AddLessonButtonSettings from "../../buttons/ButtonsForSettings/AddLessonButtonSettings";
+import GoBackButtonSettings from "../../buttons/go_back_button/GoBackButtonSettings";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
@@ -78,8 +79,15 @@ const SettingsForm = () => {
     navigate('/addTeacher')
   }
 
+  function openHome(){
+      navigate('/home')
+  }
+
   return (
       <div className="settings-form-container">
+          <div style={{transform: "translate(0%, -100%)"}}>
+            <GoBackButtonSettings text={"Назад"} onClick={openHome}/>
+          </div>
         <label className="label1">Имя пользователя</label>
           <CustomInputForSettings name={cookies.getCookies("login")}/>
           <label className="label2">Роль</label>
