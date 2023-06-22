@@ -27,7 +27,7 @@ const TeachersForm = () => {
 
     function onItemClick(event){
         console.log(event.target.id)
-        navigate(`/timetable/${event.target.id}`)
+        navigate(`/timetable/teachers/${event.target.id}`)
     }
 
     return (
