@@ -1,10 +1,10 @@
-.add-admin-button-settings {
+.add-faculty-button-settings {
     border: none;
     margin: 0.5rem 0;
     padding: 1rem;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #47dbd5;
+    background-color: #74d59e;
     color: black;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-size: 20px;

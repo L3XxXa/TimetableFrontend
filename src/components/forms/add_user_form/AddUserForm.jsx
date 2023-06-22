@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './AddUserForm.css'
-import AddUserButton from "../../buttons/add_user_button/AddUserButton";
+import AddButton from "../../buttons/add_user_button/AddButton";
 import CustomInputForAddUser from "../../inputs/CustomInputForAddUser";
 import CustomPasswordForAddUser from "../../inputs/CustomPasswordForAddUser";
 import CustomDropdown from "../../inputs/CustomDropdown";
@@ -92,9 +92,7 @@ const AddUserForm = () => {
         handleChange(event)
       }
       }/>
-      <div className="add-user-button">
-        <AddUserButton text={"Добавить"} onClick={addUser}/>
-      </div>
+        <AddButton text={"Добавить"} onClick={addUser}/>
     </div>
   );
 };

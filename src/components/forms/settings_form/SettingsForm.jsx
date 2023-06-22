@@ -17,6 +17,7 @@ import AddStudentButtonSettings from "../../buttons/ButtonsForSettings/AddStuden
 import AddTeacherButtonSettings from "../../buttons/ButtonsForSettings/AddTeacherButtonSettings";
 import AddLessonButtonSettings from "../../buttons/ButtonsForSettings/AddLessonButtonSettings";
 import GoBackButtonSettings from "../../buttons/go_back_button/GoBackButtonSettings";
+import AddAdminButton from "../../buttons/ButtonsForSettings/AddAdminButton";
 
 const SettingsForm = () => {
   const navigate = useNavigate()
@@ -83,6 +84,10 @@ const SettingsForm = () => {
       navigate('/home')
   }
 
+  function openAddAdmin(){
+      navigate('/addAdmin')
+  }
+
   return (
       <div className="settings-form-container">
           <div style={{transform: "translate(0%, -100%)"}}>
@@ -94,6 +99,9 @@ const SettingsForm = () => {
           <CustomInputForSettings2 role={cookies.getCookies("role")}/>
           <div style = {{ display: isVisible ? "block": "none" }}>
               <AddUserButtonSettings onClick={openAddUser} text={"Добавить пользователя"} />
+          </div>
+          <div style = {{ display: isVisible ? "block": "none" }}>
+              <AddAdminButton onClick={openAddAdmin} text={"Добавить администратора"} />
           </div>
           <div style = {{ display: isVisible ? "block": "none" }}>
               <AddFacultyButtonSettings onClick={openAddFaculty} text={"Добавить факультет"} />
@@ -127,7 +135,6 @@ const SettingsForm = () => {
           <div style = {{ display: isVisible ? "block": "none" }} >
               <GenerateButtonSettings text={"Сгенерировать расписание"} />
           </div>
-
           <div className="exit-button-button">
               <ExitButtonSettings onClick={logout} text={"Выйти"} />
           </div>
