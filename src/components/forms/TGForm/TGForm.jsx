@@ -1,16 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./TGForm.css"
 import api from "../../../api/Api";
+import {useNavigate} from "react-router-dom";
 
 const TGForm = (props) => {
     const [firstYear, setFirstYear] = useState([{group: 0, year: 0}])
     const [secondYear, setSecondYear] = useState([{group: 0, year: 0}])
     const [thirdYear, setThirdYear] = useState([{group: 0, year: 0}])
     const [fourthYear, setFourthYear] = useState([{group: 0, year: 0}])
-
+    const navigate = useNavigate()
 
     async function setGroupsRef(){
-        await api.refreshToken()
         let data = await api.getGroupsByFaculty(props.faculty)
         return data
     }
@@ -46,10 +46,10 @@ const TGForm = (props) => {
         setFourthYear(fourthYearGroups)
     }
 
-    function openTimetable(event){
-        alert("ДАБЛЯТЬ")
+    function onItemClick(event){
+        console.log(event.target.id)
+        navigate(`/timetable/${event.target.id}`)
     }
-
     return (
       <div className="timetableGroups-form-container">
           <div className="timetableGroups-form-container">
@@ -64,7 +64,7 @@ const TGForm = (props) => {
                                   {
                                       firstYear.map(item => (
                                           <td key={item.group} >
-                                              <a className="group" href={"/timetable/" + item.group}>{item.group}</a>
+                                              <a className="group" onClick={onItemClick} id={item.group.toString()}>{item.group}</a>
                                           </td>
                                       ))
                                   }
@@ -77,7 +77,7 @@ const TGForm = (props) => {
                                   {
                                       secondYear.map(item => (
                                           <td key={item.group} >
-                                              <a className="group" href={"/timetable/" + item.group}>{item.group}</a>
+                                              <a className="group" onClick={onItemClick} id={item.group.toString()}>{item.group}</a>
                                           </td>                                      ))
                                   }
                               </tr>
@@ -88,7 +88,7 @@ const TGForm = (props) => {
                                   {
                                       thirdYear.map(item => (
                                           <td key={item.group} >
-                                              <a className="group" href={"/timetable/" + item.group}>{item.group}</a>
+                                              <a className="group" onClick={onItemClick} id={item.group.toString()}>{item.group}</a>
                                           </td>                                      ))
                                   }
                               </tr>
@@ -99,7 +99,7 @@ const TGForm = (props) => {
                                   {
                                       fourthYear.map(item => (
                                           <td key={item.group} >
-                                              <a className="group" href={"/timetable/" + item.group}>{item.group}</a>
+                                              <a className="group" onClick={onItemClick} id={item.group.toString()}>{item.group}</a>
                                           </td>
                                       ))
                                   }

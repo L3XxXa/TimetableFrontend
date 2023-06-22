@@ -21,6 +21,7 @@ import AddStudentPage from "./pages/add_student_page/AddStudentPage";
 import AddSubjectPage from "./pages/add_subject_page/AddSubjectPage";
 import AddLessonPage from "./pages/add_lesson_page/AddLessonPage";
 import AddTeacherPage from "./pages/AddTeacherPage/AddTeacherPage";
+import TeachersPage from "./pages/teachers_page/TeachersPage";
 
 const router = createBrowserRouter([
   {
@@ -56,8 +57,12 @@ const router = createBrowserRouter([
     element: <Settings/>
   },
   {
-    path: '/timetable',
+    path: '/timetable/:type',
     element: <TimetablePage/>
+  },
+  {
+    path: '/teachers/',
+    element: <TeachersPage/>
   },
   {
     path: '/addSpecialization',
