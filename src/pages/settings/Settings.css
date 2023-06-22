@@ -16,7 +16,6 @@
     font-size: 30px;
     font-weight: normal;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    margin-left: 3%;
-    margin-top: 3%;
+    transform: translate(140%, -900%);
 }
 

@@ -12,27 +12,16 @@ const TGForm = () => {
                                   <td>
                                       <h4 className="t1">1 курс</h4>
                                   </td>
-
-
                                   <td>
                                       <a className="group" href="/exam/22201">22201</a></td>
-
-
                                   <td>
                                       <a className="group" href="/exam/22202">22202</a></td>
-
-
                                   <td>
                                       <a className="group" href="/exam/22203">22203</a></td>
-
-
                                   <td>
                                       <a className="group" href="/exam/22204">22204</a></td>
-
-
                                   <td>
                                       <a className="group" href="/exam/22205">22205</a></td>
-
                               </tr>
 
 

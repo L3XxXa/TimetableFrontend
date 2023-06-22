@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./TimetableGroupPage.css"
 import {useParams} from "react-router-dom";
 import TGForm from "../../components/forms/TGForm/TGForm";
+import api from "../../api/Api";
 
 const TimetableGroupPage = () => {
     const param = useParams()
@@ -22,8 +23,15 @@ const TimetableGroupPage = () => {
         }
     }
 
+    async function getGroups(){
+        await api.refreshToken()
+        let data = await api.getGroupsByFaculty(facName)
+        console.log(data)
+    }
+
     useEffect(() => {
         setFacultyName()
+        getGroups()
     })
 
     return (
