@@ -196,7 +196,7 @@ const getGroupsByFaculty = async(facultyName) => {
   }).catch(error => {
     if (error.response.status === 403){
       refreshToken()
-      getGroupsByFaculty()
+      getGroupsByFaculty(facultyName)
     }
   })
   return returnData
