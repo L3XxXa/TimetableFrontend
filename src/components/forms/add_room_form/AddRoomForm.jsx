@@ -65,9 +65,7 @@ const AddRoomForm = () => {
           handleChange(event)
         }
       }/>
-      <div className="add-user-button">
         <AddButton text={"Добавить"} onClick={addRoom}/>
-      </div>
     </div>
   );
 };

@@ -74,7 +74,7 @@ const AddStudentForm = () => {
 
   return (
     <div className="auth-form-container1">
-      <h2 className="h2">Добавление группы</h2>
+      <h2 className="h2">Добавление студента</h2>
       <label className="label">Факультет</label>
       <CustomDropdown placeholder={"Выберите факультет"} options={optionsFaculty} handleChange={event => {
         handleChangeFaculty(event)
