@@ -1,4 +1,4 @@
-.generate-button-settings {
+.go-back-button-settings {
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -8,5 +8,6 @@
     font-size: 20px;
     text-align: center;
     width: 51%;
-    transform: translate(-75%, 50%);
+    padding: 10px;
+    transform: translate(-75%);
 }

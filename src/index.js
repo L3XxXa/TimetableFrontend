@@ -72,7 +72,7 @@ const router = createBrowserRouter([
     element: <AddGroupPage/>
   },
   {
-    path: '/timetableGroups',
+    path: '/faculties/:faculty/groups',
     element: <TimetableGroupPage/>
   },
   {

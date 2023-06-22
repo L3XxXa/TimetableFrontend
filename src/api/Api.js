@@ -167,6 +167,41 @@ const getGroups = async (facultyId, specializationId, studyYearId)=> {
   return returnData
 };
 
+const getGroupsByFaculty = async(facultyName) => {
+  const accessToken = cookies.getCookies("accessToken")
+  const type = cookies.getCookies("type")
+  const url = new URL(baseUrl);
+  let returnData = []
+  url.pathname = "api/v1/faculty"
+  await axios.get(url.href, {
+    headers: {
+      "Content-Type": 'application/json',
+      "Authorization": `${type} ${accessToken}`
+    },
+  }).then(response => {
+    response.data.forEach(d => {
+      if (d.name === facultyName){
+        d.specializations.forEach(spec => {
+          spec.studyYears.forEach(year => {
+            year.groups.forEach(group => {
+              returnData.push({
+                group: group.number,
+                year: year.year
+              })
+            })
+          })
+        })
+      }
+    })
+  }).catch(error => {
+    if (error.response.status === 403){
+      refreshToken()
+      getGroupsByFaculty(facultyName)
+    }
+  })
+  return returnData
+}
+
 const getSubjects = async (facultyId, specializationId, studyYearId)=> {
   const accessToken = cookies.getCookies("accessToken")
   const type = cookies.getCookies("type")
@@ -524,7 +559,8 @@ const exportedFunctions = {
   getSubjects,
   addLesson,
   addTeacher,
-  getTeachers
+  getTeachers,
+  getGroupsByFaculty
 };
 
 export default exportedFunctions;

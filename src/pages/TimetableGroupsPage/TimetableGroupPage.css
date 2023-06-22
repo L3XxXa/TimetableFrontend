@@ -10,11 +10,11 @@
     min-height: 99vh;
     min-width: 102vh;
 }
-.w1{
+.w__1{
     text-align: center;
     font-size: 30px;
     font-weight: normal;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    transform: translate(139%, -900%);
+    transform: translate(74%, -900%);
 }
 

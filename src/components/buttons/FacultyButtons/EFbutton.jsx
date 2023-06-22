@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/EF.css"
 
 
-const EFbutton = () => {
+const EFbutton = (props) => {
     return (
         <div>
-            <button className="EF" > </button>
+            <button className="EF" onClick={props.onClick}> </button>
         </div>
     );
 };

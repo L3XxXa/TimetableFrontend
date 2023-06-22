@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/FF.css"
 
 
-const FFbutton = () => {
+const FFbutton = (props) => {
     return (
         <div>
-            <button className="FF" > </button>
+            <button className="FF" onClick={props.onClick}> </button>
         </div>
     );
 };

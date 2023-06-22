@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/GI.css"
 
 
-const GIbutton = () => {
+const GIbutton = (props) => {
     return (
         <div>
-            <button className="GI" > </button>
+            <button className="GI" onClick={props.onClick}> </button>
         </div>
     );
 };
