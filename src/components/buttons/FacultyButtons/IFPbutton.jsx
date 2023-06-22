@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/IFP.css"
 
 
-const IFPbutton = () => {
+const IFPbutton = (props) => {
     return (
         <div>
-            <button className="IFP" > </button>
+            <button className="IFP" onClick={props.onClick}> </button>
         </div>
     );
 };

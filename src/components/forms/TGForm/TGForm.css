@@ -60,3 +60,7 @@
      color: black;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
  }
+
+.timetableGroups-form-container{
+    transform: translate(-20%, 0%);
+}

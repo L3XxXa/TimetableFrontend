@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/MMF.css"
 
 
-const MMFbutton = () => {
+const MMFbutton = (props) => {
     return (
         <div>
-            <button className="MMF" > </button>
+            <button className="MMF" onClick={props.onClick}> </button>
         </div>
     );
 };

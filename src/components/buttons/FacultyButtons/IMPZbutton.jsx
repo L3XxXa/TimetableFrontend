@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/IMPZ.css"
 
 
-const IMPZbutton = () => {
+const IMPZbutton = (props) => {
     return (
         <div>
-            <button className="IMPZ" > </button>
+            <button className="IMPZ" onClick={props.onClick}> </button>
         </div>
     );
 };

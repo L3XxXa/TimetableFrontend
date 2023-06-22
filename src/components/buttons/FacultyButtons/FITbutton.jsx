@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/FIT.css"
 
 
-const FITbutton = () => {
+const FITbutton = (props) => {
     return (
         <div>
-            <button className="FIT" > </button>
+            <button className="FIT" onClick={props.onClick}> </button>
         </div>
     );
 };

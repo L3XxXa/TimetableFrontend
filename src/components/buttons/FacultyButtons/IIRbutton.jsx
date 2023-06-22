@@ -2,10 +2,10 @@ import React from 'react';
 import "./CSS/IIR.css"
 
 
-const IIRbutton = () => {
+const IIRbutton = (props) => {
     return (
         <div>
-            <button className="IIR" > </button>
+            <button className="IIR" onClick={props.onClick}> </button>
         </div>
     );
 };
